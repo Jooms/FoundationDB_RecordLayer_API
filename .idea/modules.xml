@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FoundationDB_RecordLayer_API.iml" filepath="$PROJECT_DIR$/FoundationDB_RecordLayer_API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FoundationDB_RecordLayer_API.main.iml" filepath="$PROJECT_DIR$/.idea/modules/FoundationDB_RecordLayer_API.main.iml" />
     </modules>
   </component>
 </project>
