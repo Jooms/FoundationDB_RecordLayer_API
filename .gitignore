@@ -1,5 +1,8 @@
 out/
 
+# Ignore sensitive cluster file
+fdb_config.cluster
+
 # Ignore Gradle project-specific cache directory
 .gradle
 
