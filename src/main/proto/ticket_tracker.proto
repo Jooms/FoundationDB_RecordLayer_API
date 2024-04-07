@@ -1,0 +1,24 @@
+syntax = "proto2";
+
+option java_outer_classname = "TicketTracker";
+
+import "record_metadata_options.proto";
+
+message Ticket {
+    optional int32 id = 1;
+    optional string key = 2; // Unique but recognizable key
+    optional string title = 3;
+    optional string description = 4;
+    optional TicketType type = 5;
+}
+
+enum TicketType {
+    Work = 1;
+    NewFunctionality = 2;
+    BrokenFunctionality = 3;
+}
+
+message UnionDescriptor {
+    option (com.apple.foundationdb.record.record).usage = UNION;
+    optional Ticket _Ticket = 1;
+}
