@@ -4,7 +4,7 @@
 package com.jooms.tickettracker;
 
 public interface GoodbyeMessageOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:tickettracker.GoodbyeMessage)
+    // @@protoc_insertion_point(interface_extends:GoodbyeMessage)
     com.google.protobuf.MessageOrBuilder {
 
   /**

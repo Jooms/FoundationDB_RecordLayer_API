@@ -4,11 +4,11 @@
 package com.jooms.tickettracker;
 
 /**
- * Protobuf type {@code tickettracker.HelloMessage}
+ * Protobuf type {@code HelloMessage}
  */
 public  final class HelloMessage extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:tickettracker.HelloMessage)
+    // @@protoc_insertion_point(message_implements:HelloMessage)
     HelloMessageOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use HelloMessage.newBuilder() to construct.
@@ -76,13 +76,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_HelloMessage_descriptor;
+    return com.jooms.tickettracker.TicketTrackerService.internal_static_HelloMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_HelloMessage_fieldAccessorTable
+    return com.jooms.tickettracker.TicketTrackerService.internal_static_HelloMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.jooms.tickettracker.HelloMessage.class, com.jooms.tickettracker.HelloMessage.Builder.class);
   }
@@ -276,21 +276,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code tickettracker.HelloMessage}
+   * Protobuf type {@code HelloMessage}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:tickettracker.HelloMessage)
+      // @@protoc_insertion_point(builder_implements:HelloMessage)
       com.jooms.tickettracker.HelloMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_HelloMessage_descriptor;
+      return com.jooms.tickettracker.TicketTrackerService.internal_static_HelloMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_HelloMessage_fieldAccessorTable
+      return com.jooms.tickettracker.TicketTrackerService.internal_static_HelloMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.jooms.tickettracker.HelloMessage.class, com.jooms.tickettracker.HelloMessage.Builder.class);
     }
@@ -321,7 +321,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_HelloMessage_descriptor;
+      return com.jooms.tickettracker.TicketTrackerService.internal_static_HelloMessage_descriptor;
     }
 
     @java.lang.Override
@@ -504,10 +504,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:tickettracker.HelloMessage)
+    // @@protoc_insertion_point(builder_scope:HelloMessage)
   }
 
-  // @@protoc_insertion_point(class_scope:tickettracker.HelloMessage)
+  // @@protoc_insertion_point(class_scope:HelloMessage)
   private static final com.jooms.tickettracker.HelloMessage DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new com.jooms.tickettracker.HelloMessage();

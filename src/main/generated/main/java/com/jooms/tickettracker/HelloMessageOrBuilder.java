@@ -4,7 +4,7 @@
 package com.jooms.tickettracker;
 
 public interface HelloMessageOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:tickettracker.HelloMessage)
+    // @@protoc_insertion_point(interface_extends:HelloMessage)
     com.google.protobuf.MessageOrBuilder {
 
   /**

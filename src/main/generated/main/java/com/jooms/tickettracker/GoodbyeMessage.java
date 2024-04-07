@@ -4,11 +4,11 @@
 package com.jooms.tickettracker;
 
 /**
- * Protobuf type {@code tickettracker.GoodbyeMessage}
+ * Protobuf type {@code GoodbyeMessage}
  */
 public  final class GoodbyeMessage extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:tickettracker.GoodbyeMessage)
+    // @@protoc_insertion_point(message_implements:GoodbyeMessage)
     GoodbyeMessageOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use GoodbyeMessage.newBuilder() to construct.
@@ -76,13 +76,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_GoodbyeMessage_descriptor;
+    return com.jooms.tickettracker.TicketTrackerService.internal_static_GoodbyeMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_GoodbyeMessage_fieldAccessorTable
+    return com.jooms.tickettracker.TicketTrackerService.internal_static_GoodbyeMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.jooms.tickettracker.GoodbyeMessage.class, com.jooms.tickettracker.GoodbyeMessage.Builder.class);
   }
@@ -276,21 +276,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code tickettracker.GoodbyeMessage}
+   * Protobuf type {@code GoodbyeMessage}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:tickettracker.GoodbyeMessage)
+      // @@protoc_insertion_point(builder_implements:GoodbyeMessage)
       com.jooms.tickettracker.GoodbyeMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_GoodbyeMessage_descriptor;
+      return com.jooms.tickettracker.TicketTrackerService.internal_static_GoodbyeMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_GoodbyeMessage_fieldAccessorTable
+      return com.jooms.tickettracker.TicketTrackerService.internal_static_GoodbyeMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.jooms.tickettracker.GoodbyeMessage.class, com.jooms.tickettracker.GoodbyeMessage.Builder.class);
     }
@@ -321,7 +321,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.jooms.tickettracker.TicketTrackerService.internal_static_tickettracker_GoodbyeMessage_descriptor;
+      return com.jooms.tickettracker.TicketTrackerService.internal_static_GoodbyeMessage_descriptor;
     }
 
     @java.lang.Override
@@ -504,10 +504,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:tickettracker.GoodbyeMessage)
+    // @@protoc_insertion_point(builder_scope:GoodbyeMessage)
   }
 
-  // @@protoc_insertion_point(class_scope:tickettracker.GoodbyeMessage)
+  // @@protoc_insertion_point(class_scope:GoodbyeMessage)
   private static final com.jooms.tickettracker.GoodbyeMessage DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new com.jooms.tickettracker.GoodbyeMessage();

@@ -15,7 +15,7 @@ public final class TicketTrackerGrpc {
 
   private TicketTrackerGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "tickettracker.TicketTracker";
+  public static final java.lang.String SERVICE_NAME = "TicketTracker";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.jooms.tickettracker.HelloMessage,

@@ -3,9 +3,6 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.jooms.tickettracker";
 option java_outer_classname = "TicketTrackerService";
-// option objc_class_prefix = "RTG";
-
-package tickettracker;
 
 // Interface exported by the server.
 service TicketTracker {

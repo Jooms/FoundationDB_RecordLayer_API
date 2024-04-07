@@ -15,15 +15,15 @@ public final class TicketTrackerService {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_tickettracker_HelloMessage_descriptor;
+    internal_static_HelloMessage_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_tickettracker_HelloMessage_fieldAccessorTable;
+      internal_static_HelloMessage_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_tickettracker_GoodbyeMessage_descriptor;
+    internal_static_GoodbyeMessage_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_tickettracker_GoodbyeMessage_fieldAccessorTable;
+      internal_static_GoodbyeMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,29 +33,28 @@ public final class TicketTrackerService {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\034ticket_tracker_service.proto\022\rtickettr" +
-      "acker\"\034\n\014HelloMessage\022\014\n\004text\030\001 \001(\t\"\036\n\016G" +
-      "oodbyeMessage\022\014\n\004text\030\001 \001(\t2Y\n\rTicketTra" +
-      "cker\022H\n\010SayHello\022\033.tickettracker.HelloMe" +
-      "ssage\032\035.tickettracker.GoodbyeMessage\"\000B1" +
-      "\n\027com.jooms.tickettrackerB\024TicketTracker" +
-      "ServiceP\001b\006proto3"
+      "\n\034ticket_tracker_service.proto\"\034\n\014HelloM" +
+      "essage\022\014\n\004text\030\001 \001(\t\"\036\n\016GoodbyeMessage\022\014" +
+      "\n\004text\030\001 \001(\t2=\n\rTicketTracker\022,\n\010SayHell" +
+      "o\022\r.HelloMessage\032\017.GoodbyeMessage\"\000B1\n\027c" +
+      "om.jooms.tickettrackerB\024TicketTrackerSer" +
+      "viceP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_tickettracker_HelloMessage_descriptor =
+    internal_static_HelloMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_tickettracker_HelloMessage_fieldAccessorTable = new
+    internal_static_HelloMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_tickettracker_HelloMessage_descriptor,
+        internal_static_HelloMessage_descriptor,
         new java.lang.String[] { "Text", });
-    internal_static_tickettracker_GoodbyeMessage_descriptor =
+    internal_static_GoodbyeMessage_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_tickettracker_GoodbyeMessage_fieldAccessorTable = new
+    internal_static_GoodbyeMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_tickettracker_GoodbyeMessage_descriptor,
+        internal_static_GoodbyeMessage_descriptor,
         new java.lang.String[] { "Text", });
   }
 
