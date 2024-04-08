@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 option java_outer_classname = "TicketTracker";
 option java_package = "com.jooms.tickettracker";
@@ -6,20 +6,20 @@ option java_package = "com.jooms.tickettracker";
 import "record_metadata_options.proto";
 
 message Ticket {
-    optional int32 id = 1;
-    optional string key = 2; // Unique but recognizable key
-    optional string title = 3;
-    optional string description = 4;
-    optional TicketType type = 5;
+    int32 id = 1;
+    string key = 2; // Unique but recognizable key
+    string title = 3;
+    string description = 4;
+    TicketType type = 5;
 }
 
 enum TicketType {
-    Work = 1;
-    NewFunctionality = 2;
-    BrokenFunctionality = 3;
+    Work = 0;
+    NewFunctionality = 1;
+    BrokenFunctionality = 2;
 }
 
 message UnionDescriptor {
     option (com.apple.foundationdb.record.record).usage = UNION;
-    optional Ticket _Ticket = 1;
+    Ticket _Ticket = 1;
 }

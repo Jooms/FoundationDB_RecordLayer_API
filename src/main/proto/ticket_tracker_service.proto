@@ -4,14 +4,35 @@ option java_multiple_files = true;
 option java_package = "com.jooms.tickettracker";
 option java_outer_classname = "TicketTrackerService";
 
-// Interface exported by the server.
+import "ticket_tracker.proto";
+
 service TicketTracker {
     rpc SayHello(HelloMessage) returns (GoodbyeMessage) {}
+    rpc CreateTicket(CreateTicketRequest) returns (CreateTicketResponse) {}
+    rpc GetTicket(GetTicketRequest) returns (GetTicketResponse) {}
 }
+
 message HelloMessage {
     string text = 1;
 }
 
 message GoodbyeMessage {
     string text = 1;
+}
+
+message CreateTicketRequest {
+    Ticket ticket = 1;
+}
+
+message CreateTicketResponse {}
+
+message GetTicketRequest {
+    oneof search_param {
+        int32 ticket_id = 1;
+    }
+}
+
+message GetTicketResponse {
+    bool found = 1;
+    Ticket ticket = 2;
 }

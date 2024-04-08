@@ -3,9 +3,6 @@ package com.jooms.tickettracker;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
- * <pre>
- * Interface exported by the server.
- * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.62.2)",
@@ -47,6 +44,68 @@ public final class TicketTrackerGrpc {
       }
     }
     return getSayHelloMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.jooms.tickettracker.CreateTicketRequest,
+      com.jooms.tickettracker.CreateTicketResponse> getCreateTicketMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateTicket",
+      requestType = com.jooms.tickettracker.CreateTicketRequest.class,
+      responseType = com.jooms.tickettracker.CreateTicketResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.jooms.tickettracker.CreateTicketRequest,
+      com.jooms.tickettracker.CreateTicketResponse> getCreateTicketMethod() {
+    io.grpc.MethodDescriptor<com.jooms.tickettracker.CreateTicketRequest, com.jooms.tickettracker.CreateTicketResponse> getCreateTicketMethod;
+    if ((getCreateTicketMethod = TicketTrackerGrpc.getCreateTicketMethod) == null) {
+      synchronized (TicketTrackerGrpc.class) {
+        if ((getCreateTicketMethod = TicketTrackerGrpc.getCreateTicketMethod) == null) {
+          TicketTrackerGrpc.getCreateTicketMethod = getCreateTicketMethod =
+              io.grpc.MethodDescriptor.<com.jooms.tickettracker.CreateTicketRequest, com.jooms.tickettracker.CreateTicketResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateTicket"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.CreateTicketRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.CreateTicketResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new TicketTrackerMethodDescriptorSupplier("CreateTicket"))
+              .build();
+        }
+      }
+    }
+    return getCreateTicketMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.jooms.tickettracker.GetTicketRequest,
+      com.jooms.tickettracker.GetTicketResponse> getGetTicketMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetTicket",
+      requestType = com.jooms.tickettracker.GetTicketRequest.class,
+      responseType = com.jooms.tickettracker.GetTicketResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.jooms.tickettracker.GetTicketRequest,
+      com.jooms.tickettracker.GetTicketResponse> getGetTicketMethod() {
+    io.grpc.MethodDescriptor<com.jooms.tickettracker.GetTicketRequest, com.jooms.tickettracker.GetTicketResponse> getGetTicketMethod;
+    if ((getGetTicketMethod = TicketTrackerGrpc.getGetTicketMethod) == null) {
+      synchronized (TicketTrackerGrpc.class) {
+        if ((getGetTicketMethod = TicketTrackerGrpc.getGetTicketMethod) == null) {
+          TicketTrackerGrpc.getGetTicketMethod = getGetTicketMethod =
+              io.grpc.MethodDescriptor.<com.jooms.tickettracker.GetTicketRequest, com.jooms.tickettracker.GetTicketResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetTicket"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.GetTicketRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.GetTicketResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new TicketTrackerMethodDescriptorSupplier("GetTicket"))
+              .build();
+        }
+      }
+    }
+    return getGetTicketMethod;
   }
 
   /**
@@ -94,9 +153,6 @@ public final class TicketTrackerGrpc {
   }
 
   /**
-   * <pre>
-   * Interface exported by the server.
-   * </pre>
    */
   public interface AsyncService {
 
@@ -106,13 +162,24 @@ public final class TicketTrackerGrpc {
         io.grpc.stub.StreamObserver<com.jooms.tickettracker.GoodbyeMessage> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void createTicket(com.jooms.tickettracker.CreateTicketRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.CreateTicketResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateTicketMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getTicket(com.jooms.tickettracker.GetTicketRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTicketMethod(), responseObserver);
+    }
   }
 
   /**
    * Base class for the server implementation of the service TicketTracker.
-   * <pre>
-   * Interface exported by the server.
-   * </pre>
    */
   public static abstract class TicketTrackerImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -124,9 +191,6 @@ public final class TicketTrackerGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service TicketTracker.
-   * <pre>
-   * Interface exported by the server.
-   * </pre>
    */
   public static final class TicketTrackerStub
       extends io.grpc.stub.AbstractAsyncStub<TicketTrackerStub> {
@@ -148,13 +212,26 @@ public final class TicketTrackerGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void createTicket(com.jooms.tickettracker.CreateTicketRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.CreateTicketResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateTicketMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getTicket(com.jooms.tickettracker.GetTicketRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetTicketMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service TicketTracker.
-   * <pre>
-   * Interface exported by the server.
-   * </pre>
    */
   public static final class TicketTrackerBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<TicketTrackerBlockingStub> {
@@ -175,13 +252,24 @@ public final class TicketTrackerGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSayHelloMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.jooms.tickettracker.CreateTicketResponse createTicket(com.jooms.tickettracker.CreateTicketRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateTicketMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.jooms.tickettracker.GetTicketResponse getTicket(com.jooms.tickettracker.GetTicketRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetTicketMethod(), getCallOptions(), request);
+    }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service TicketTracker.
-   * <pre>
-   * Interface exported by the server.
-   * </pre>
    */
   public static final class TicketTrackerFutureStub
       extends io.grpc.stub.AbstractFutureStub<TicketTrackerFutureStub> {
@@ -203,9 +291,27 @@ public final class TicketTrackerGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSayHelloMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.jooms.tickettracker.CreateTicketResponse> createTicket(
+        com.jooms.tickettracker.CreateTicketRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateTicketMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.jooms.tickettracker.GetTicketResponse> getTicket(
+        com.jooms.tickettracker.GetTicketRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetTicketMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SAY_HELLO = 0;
+  private static final int METHODID_CREATE_TICKET = 1;
+  private static final int METHODID_GET_TICKET = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -227,6 +333,14 @@ public final class TicketTrackerGrpc {
         case METHODID_SAY_HELLO:
           serviceImpl.sayHello((com.jooms.tickettracker.HelloMessage) request,
               (io.grpc.stub.StreamObserver<com.jooms.tickettracker.GoodbyeMessage>) responseObserver);
+          break;
+        case METHODID_CREATE_TICKET:
+          serviceImpl.createTicket((com.jooms.tickettracker.CreateTicketRequest) request,
+              (io.grpc.stub.StreamObserver<com.jooms.tickettracker.CreateTicketResponse>) responseObserver);
+          break;
+        case METHODID_GET_TICKET:
+          serviceImpl.getTicket((com.jooms.tickettracker.GetTicketRequest) request,
+              (io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -253,6 +367,20 @@ public final class TicketTrackerGrpc {
               com.jooms.tickettracker.HelloMessage,
               com.jooms.tickettracker.GoodbyeMessage>(
                 service, METHODID_SAY_HELLO)))
+        .addMethod(
+          getCreateTicketMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.jooms.tickettracker.CreateTicketRequest,
+              com.jooms.tickettracker.CreateTicketResponse>(
+                service, METHODID_CREATE_TICKET)))
+        .addMethod(
+          getGetTicketMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.jooms.tickettracker.GetTicketRequest,
+              com.jooms.tickettracker.GetTicketResponse>(
+                service, METHODID_GET_TICKET)))
         .build();
   }
 
@@ -302,6 +430,8 @@ public final class TicketTrackerGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new TicketTrackerFileDescriptorSupplier())
               .addMethod(getSayHelloMethod())
+              .addMethod(getCreateTicketMethod())
+              .addMethod(getGetTicketMethod())
               .build();
         }
       }

@@ -20,34 +20,39 @@ public final class TicketTracker {
   public enum TicketType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>Work = 1;</code>
+     * <code>Work = 0;</code>
      */
-    Work(1),
+    Work(0),
     /**
-     * <code>NewFunctionality = 2;</code>
+     * <code>NewFunctionality = 1;</code>
      */
-    NewFunctionality(2),
+    NewFunctionality(1),
     /**
-     * <code>BrokenFunctionality = 3;</code>
+     * <code>BrokenFunctionality = 2;</code>
      */
-    BrokenFunctionality(3),
+    BrokenFunctionality(2),
+    UNRECOGNIZED(-1),
     ;
 
     /**
-     * <code>Work = 1;</code>
+     * <code>Work = 0;</code>
      */
-    public static final int Work_VALUE = 1;
+    public static final int Work_VALUE = 0;
     /**
-     * <code>NewFunctionality = 2;</code>
+     * <code>NewFunctionality = 1;</code>
      */
-    public static final int NewFunctionality_VALUE = 2;
+    public static final int NewFunctionality_VALUE = 1;
     /**
-     * <code>BrokenFunctionality = 3;</code>
+     * <code>BrokenFunctionality = 2;</code>
      */
-    public static final int BrokenFunctionality_VALUE = 3;
+    public static final int BrokenFunctionality_VALUE = 2;
 
 
     public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
       return value;
     }
 
@@ -61,9 +66,9 @@ public final class TicketTracker {
 
     public static TicketType forNumber(int value) {
       switch (value) {
-        case 1: return Work;
-        case 2: return NewFunctionality;
-        case 3: return BrokenFunctionality;
+        case 0: return Work;
+        case 1: return NewFunctionality;
+        case 2: return BrokenFunctionality;
         default: return null;
       }
     }
@@ -101,6 +106,9 @@ public final class TicketTracker {
         throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
       return VALUES[desc.getIndex()];
     }
 
@@ -118,11 +126,7 @@ public final class TicketTracker {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 id = 1;</code>
-     */
-    boolean hasId();
-    /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     int getId();
 
@@ -131,15 +135,7 @@ public final class TicketTracker {
      * Unique but recognizable key
      * </pre>
      *
-     * <code>optional string key = 2;</code>
-     */
-    boolean hasKey();
-    /**
-     * <pre>
-     * Unique but recognizable key
-     * </pre>
-     *
-     * <code>optional string key = 2;</code>
+     * <code>string key = 2;</code>
      */
     java.lang.String getKey();
     /**
@@ -147,45 +143,37 @@ public final class TicketTracker {
      * Unique but recognizable key
      * </pre>
      *
-     * <code>optional string key = 2;</code>
+     * <code>string key = 2;</code>
      */
     com.google.protobuf.ByteString
         getKeyBytes();
 
     /**
-     * <code>optional string title = 3;</code>
-     */
-    boolean hasTitle();
-    /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     java.lang.String getTitle();
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
-     * <code>optional string description = 4;</code>
-     */
-    boolean hasDescription();
-    /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     java.lang.String getDescription();
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>optional .TicketType type = 5;</code>
+     * <code>.TicketType type = 5;</code>
      */
-    boolean hasType();
+    int getTypeValue();
     /**
-     * <code>optional .TicketType type = 5;</code>
+     * <code>.TicketType type = 5;</code>
      */
     com.jooms.tickettracker.TicketTracker.TicketType getType();
   }
@@ -205,7 +193,7 @@ public final class TicketTracker {
       key_ = "";
       title_ = "";
       description_ = "";
-      type_ = 1;
+      type_ = 0;
     }
 
     @java.lang.Override
@@ -228,7 +216,6 @@ public final class TicketTracker {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -240,38 +227,32 @@ public final class TicketTracker {
               done = true;
               break;
             case 8: {
-              bitField0_ |= 0x00000001;
+
               id_ = input.readInt32();
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              key_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              key_ = s;
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              title_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              title_ = s;
               break;
             }
             case 34: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000008;
-              description_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
               break;
             }
             case 40: {
               int rawValue = input.readEnum();
-                @SuppressWarnings("deprecation")
-              com.jooms.tickettracker.TicketTracker.TicketType value = com.jooms.tickettracker.TicketTracker.TicketType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(5, rawValue);
-              } else {
-                bitField0_ |= 0x00000010;
-                type_ = rawValue;
-              }
+
+              type_ = rawValue;
               break;
             }
             default: {
@@ -306,17 +287,10 @@ public final class TicketTracker {
               com.jooms.tickettracker.TicketTracker.Ticket.class, com.jooms.tickettracker.TicketTracker.Ticket.Builder.class);
     }
 
-    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>optional int32 id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional int32 id = 1;</code>
+     * <code>int32 id = 1;</code>
      */
     public int getId() {
       return id_;
@@ -329,17 +303,7 @@ public final class TicketTracker {
      * Unique but recognizable key
      * </pre>
      *
-     * <code>optional string key = 2;</code>
-     */
-    public boolean hasKey() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <pre>
-     * Unique but recognizable key
-     * </pre>
-     *
-     * <code>optional string key = 2;</code>
+     * <code>string key = 2;</code>
      */
     public java.lang.String getKey() {
       java.lang.Object ref = key_;
@@ -349,9 +313,7 @@ public final class TicketTracker {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          key_ = s;
-        }
+        key_ = s;
         return s;
       }
     }
@@ -360,7 +322,7 @@ public final class TicketTracker {
      * Unique but recognizable key
      * </pre>
      *
-     * <code>optional string key = 2;</code>
+     * <code>string key = 2;</code>
      */
     public com.google.protobuf.ByteString
         getKeyBytes() {
@@ -379,13 +341,7 @@ public final class TicketTracker {
     public static final int TITLE_FIELD_NUMBER = 3;
     private volatile java.lang.Object title_;
     /**
-     * <code>optional string title = 3;</code>
-     */
-    public boolean hasTitle() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -395,14 +351,12 @@ public final class TicketTracker {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          title_ = s;
-        }
+        title_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string title = 3;</code>
+     * <code>string title = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -421,13 +375,7 @@ public final class TicketTracker {
     public static final int DESCRIPTION_FIELD_NUMBER = 4;
     private volatile java.lang.Object description_;
     /**
-     * <code>optional string description = 4;</code>
-     */
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
@@ -437,14 +385,12 @@ public final class TicketTracker {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
+        description_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string description = 4;</code>
+     * <code>string description = 4;</code>
      */
     public com.google.protobuf.ByteString
         getDescriptionBytes() {
@@ -463,18 +409,18 @@ public final class TicketTracker {
     public static final int TYPE_FIELD_NUMBER = 5;
     private int type_;
     /**
-     * <code>optional .TicketType type = 5;</code>
+     * <code>.TicketType type = 5;</code>
      */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000010) != 0);
+    public int getTypeValue() {
+      return type_;
     }
     /**
-     * <code>optional .TicketType type = 5;</code>
+     * <code>.TicketType type = 5;</code>
      */
     public com.jooms.tickettracker.TicketTracker.TicketType getType() {
       @SuppressWarnings("deprecation")
       com.jooms.tickettracker.TicketTracker.TicketType result = com.jooms.tickettracker.TicketTracker.TicketType.valueOf(type_);
-      return result == null ? com.jooms.tickettracker.TicketTracker.TicketType.Work : result;
+      return result == null ? com.jooms.tickettracker.TicketTracker.TicketType.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -491,19 +437,19 @@ public final class TicketTracker {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (id_ != 0) {
         output.writeInt32(1, id_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (!getKeyBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, key_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (!getTitleBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (!getDescriptionBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, description_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (type_ != com.jooms.tickettracker.TicketTracker.TicketType.Work.getNumber()) {
         output.writeEnum(5, type_);
       }
       unknownFields.writeTo(output);
@@ -515,20 +461,20 @@ public final class TicketTracker {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (!getKeyBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, key_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (!getTitleBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (!getDescriptionBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, description_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (type_ != com.jooms.tickettracker.TicketTracker.TicketType.Work.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, type_);
       }
@@ -547,30 +493,15 @@ public final class TicketTracker {
       }
       com.jooms.tickettracker.TicketTracker.Ticket other = (com.jooms.tickettracker.TicketTracker.Ticket) obj;
 
-      if (hasId() != other.hasId()) return false;
-      if (hasId()) {
-        if (getId()
-            != other.getId()) return false;
-      }
-      if (hasKey() != other.hasKey()) return false;
-      if (hasKey()) {
-        if (!getKey()
-            .equals(other.getKey())) return false;
-      }
-      if (hasTitle() != other.hasTitle()) return false;
-      if (hasTitle()) {
-        if (!getTitle()
-            .equals(other.getTitle())) return false;
-      }
-      if (hasDescription() != other.hasDescription()) return false;
-      if (hasDescription()) {
-        if (!getDescription()
-            .equals(other.getDescription())) return false;
-      }
-      if (hasType() != other.hasType()) return false;
-      if (hasType()) {
-        if (type_ != other.type_) return false;
-      }
+      if (getId()
+          != other.getId()) return false;
+      if (!getKey()
+          .equals(other.getKey())) return false;
+      if (!getTitle()
+          .equals(other.getTitle())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (type_ != other.type_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -582,26 +513,16 @@ public final class TicketTracker {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasId()) {
-        hash = (37 * hash) + ID_FIELD_NUMBER;
-        hash = (53 * hash) + getId();
-      }
-      if (hasKey()) {
-        hash = (37 * hash) + KEY_FIELD_NUMBER;
-        hash = (53 * hash) + getKey().hashCode();
-      }
-      if (hasTitle()) {
-        hash = (37 * hash) + TITLE_FIELD_NUMBER;
-        hash = (53 * hash) + getTitle().hashCode();
-      }
-      if (hasDescription()) {
-        hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-        hash = (53 * hash) + getDescription().hashCode();
-      }
-      if (hasType()) {
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + type_;
-      }
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey().hashCode();
+      hash = (37 * hash) + TITLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTitle().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + type_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -736,15 +657,15 @@ public final class TicketTracker {
       public Builder clear() {
         super.clear();
         id_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         key_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         title_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        type_ = 1;
-        bitField0_ = (bitField0_ & ~0x00000010);
+
+        type_ = 0;
+
         return this;
       }
 
@@ -771,29 +692,11 @@ public final class TicketTracker {
       @java.lang.Override
       public com.jooms.tickettracker.TicketTracker.Ticket buildPartial() {
         com.jooms.tickettracker.TicketTracker.Ticket result = new com.jooms.tickettracker.TicketTracker.Ticket(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.id_ = id_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
+        result.id_ = id_;
         result.key_ = key_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.title_ = title_;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.description_ = description_;
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          to_bitField0_ |= 0x00000010;
-        }
         result.type_ = type_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -842,26 +745,23 @@ public final class TicketTracker {
 
       public Builder mergeFrom(com.jooms.tickettracker.TicketTracker.Ticket other) {
         if (other == com.jooms.tickettracker.TicketTracker.Ticket.getDefaultInstance()) return this;
-        if (other.hasId()) {
+        if (other.getId() != 0) {
           setId(other.getId());
         }
-        if (other.hasKey()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getKey().isEmpty()) {
           key_ = other.key_;
           onChanged();
         }
-        if (other.hasTitle()) {
-          bitField0_ |= 0x00000004;
+        if (!other.getTitle().isEmpty()) {
           title_ = other.title_;
           onChanged();
         }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000008;
+        if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
         }
-        if (other.hasType()) {
-          setType(other.getType());
+        if (other.type_ != 0) {
+          setTypeValue(other.getTypeValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -891,35 +791,28 @@ public final class TicketTracker {
         }
         return this;
       }
-      private int bitField0_;
 
       private int id_ ;
       /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
+        
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 id = 1;</code>
+       * <code>int32 id = 1;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         id_ = 0;
         onChanged();
         return this;
@@ -931,17 +824,7 @@ public final class TicketTracker {
        * Unique but recognizable key
        * </pre>
        *
-       * <code>optional string key = 2;</code>
-       */
-      public boolean hasKey() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <pre>
-       * Unique but recognizable key
-       * </pre>
-       *
-       * <code>optional string key = 2;</code>
+       * <code>string key = 2;</code>
        */
       public java.lang.String getKey() {
         java.lang.Object ref = key_;
@@ -949,9 +832,7 @@ public final class TicketTracker {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            key_ = s;
-          }
+          key_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -962,7 +843,7 @@ public final class TicketTracker {
        * Unique but recognizable key
        * </pre>
        *
-       * <code>optional string key = 2;</code>
+       * <code>string key = 2;</code>
        */
       public com.google.protobuf.ByteString
           getKeyBytes() {
@@ -982,14 +863,14 @@ public final class TicketTracker {
        * Unique but recognizable key
        * </pre>
        *
-       * <code>optional string key = 2;</code>
+       * <code>string key = 2;</code>
        */
       public Builder setKey(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         key_ = value;
         onChanged();
         return this;
@@ -999,10 +880,10 @@ public final class TicketTracker {
        * Unique but recognizable key
        * </pre>
        *
-       * <code>optional string key = 2;</code>
+       * <code>string key = 2;</code>
        */
       public Builder clearKey() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         key_ = getDefaultInstance().getKey();
         onChanged();
         return this;
@@ -1012,14 +893,15 @@ public final class TicketTracker {
        * Unique but recognizable key
        * </pre>
        *
-       * <code>optional string key = 2;</code>
+       * <code>string key = 2;</code>
        */
       public Builder setKeyBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         key_ = value;
         onChanged();
         return this;
@@ -1027,13 +909,7 @@ public final class TicketTracker {
 
       private java.lang.Object title_ = "";
       /**
-       * <code>optional string title = 3;</code>
-       */
-      public boolean hasTitle() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -1041,16 +917,14 @@ public final class TicketTracker {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            title_ = s;
-          }
+          title_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -1066,36 +940,37 @@ public final class TicketTracker {
         }
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder setTitle(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
         title_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder clearTitle() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        
         title_ = getDefaultInstance().getTitle();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string title = 3;</code>
+       * <code>string title = 3;</code>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+        
         title_ = value;
         onChanged();
         return this;
@@ -1103,13 +978,7 @@ public final class TicketTracker {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>optional string description = 4;</code>
-       */
-      public boolean hasDescription() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
@@ -1117,16 +986,14 @@ public final class TicketTracker {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            description_ = s;
-          }
+          description_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public com.google.protobuf.ByteString
           getDescriptionBytes() {
@@ -1142,74 +1009,83 @@ public final class TicketTracker {
         }
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder setDescription(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  
         description_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        
         description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string description = 4;</code>
+       * <code>string description = 4;</code>
        */
       public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  checkByteStringIsUtf8(value);
+        
         description_ = value;
         onChanged();
         return this;
       }
 
-      private int type_ = 1;
+      private int type_ = 0;
       /**
-       * <code>optional .TicketType type = 5;</code>
+       * <code>.TicketType type = 5;</code>
        */
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000010) != 0);
+      public int getTypeValue() {
+        return type_;
       }
       /**
-       * <code>optional .TicketType type = 5;</code>
+       * <code>.TicketType type = 5;</code>
+       */
+      public Builder setTypeValue(int value) {
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.TicketType type = 5;</code>
        */
       public com.jooms.tickettracker.TicketTracker.TicketType getType() {
         @SuppressWarnings("deprecation")
         com.jooms.tickettracker.TicketTracker.TicketType result = com.jooms.tickettracker.TicketTracker.TicketType.valueOf(type_);
-        return result == null ? com.jooms.tickettracker.TicketTracker.TicketType.Work : result;
+        return result == null ? com.jooms.tickettracker.TicketTracker.TicketType.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional .TicketType type = 5;</code>
+       * <code>.TicketType type = 5;</code>
        */
       public Builder setType(com.jooms.tickettracker.TicketTracker.TicketType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000010;
+        
         type_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>optional .TicketType type = 5;</code>
+       * <code>.TicketType type = 5;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        type_ = 1;
+        
+        type_ = 0;
         onChanged();
         return this;
       }
@@ -1239,7 +1115,7 @@ public final class TicketTracker {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<Ticket>
+    private static final com.google.protobuf.Parser<Ticket>
         PARSER = new com.google.protobuf.AbstractParser<Ticket>() {
       @java.lang.Override
       public Ticket parsePartialFrom(
@@ -1271,15 +1147,15 @@ public final class TicketTracker {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .Ticket _Ticket = 1;</code>
+     * <code>.Ticket _Ticket = 1;</code>
      */
     boolean hasTicket();
     /**
-     * <code>optional .Ticket _Ticket = 1;</code>
+     * <code>.Ticket _Ticket = 1;</code>
      */
     com.jooms.tickettracker.TicketTracker.Ticket getTicket();
     /**
-     * <code>optional .Ticket _Ticket = 1;</code>
+     * <code>.Ticket _Ticket = 1;</code>
      */
     com.jooms.tickettracker.TicketTracker.TicketOrBuilder getTicketOrBuilder();
   }
@@ -1318,7 +1194,6 @@ public final class TicketTracker {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
-      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1331,15 +1206,15 @@ public final class TicketTracker {
               break;
             case 10: {
               com.jooms.tickettracker.TicketTracker.Ticket.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) != 0)) {
+              if (Ticket_ != null) {
                 subBuilder = Ticket_.toBuilder();
               }
-              Ticket_ = input.readMessage(com.jooms.tickettracker.TicketTracker.Ticket.PARSER, extensionRegistry);
+              Ticket_ = input.readMessage(com.jooms.tickettracker.TicketTracker.Ticket.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(Ticket_);
                 Ticket_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+
               break;
             }
             default: {
@@ -1374,26 +1249,25 @@ public final class TicketTracker {
               com.jooms.tickettracker.TicketTracker.UnionDescriptor.class, com.jooms.tickettracker.TicketTracker.UnionDescriptor.Builder.class);
     }
 
-    private int bitField0_;
     public static final int _TICKET_FIELD_NUMBER = 1;
     private com.jooms.tickettracker.TicketTracker.Ticket Ticket_;
     /**
-     * <code>optional .Ticket _Ticket = 1;</code>
+     * <code>.Ticket _Ticket = 1;</code>
      */
     public boolean hasTicket() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return Ticket_ != null;
     }
     /**
-     * <code>optional .Ticket _Ticket = 1;</code>
+     * <code>.Ticket _Ticket = 1;</code>
      */
     public com.jooms.tickettracker.TicketTracker.Ticket getTicket() {
       return Ticket_ == null ? com.jooms.tickettracker.TicketTracker.Ticket.getDefaultInstance() : Ticket_;
     }
     /**
-     * <code>optional .Ticket _Ticket = 1;</code>
+     * <code>.Ticket _Ticket = 1;</code>
      */
     public com.jooms.tickettracker.TicketTracker.TicketOrBuilder getTicketOrBuilder() {
-      return Ticket_ == null ? com.jooms.tickettracker.TicketTracker.Ticket.getDefaultInstance() : Ticket_;
+      return getTicket();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1410,7 +1284,7 @@ public final class TicketTracker {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (Ticket_ != null) {
         output.writeMessage(1, getTicket());
       }
       unknownFields.writeTo(output);
@@ -1422,7 +1296,7 @@ public final class TicketTracker {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
+      if (Ticket_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getTicket());
       }
@@ -1589,7 +1463,6 @@ public final class TicketTracker {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getTicketFieldBuilder();
         }
       }
       @java.lang.Override
@@ -1598,9 +1471,9 @@ public final class TicketTracker {
         if (TicketBuilder_ == null) {
           Ticket_ = null;
         } else {
-          TicketBuilder_.clear();
+          Ticket_ = null;
+          TicketBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -1627,17 +1500,11 @@ public final class TicketTracker {
       @java.lang.Override
       public com.jooms.tickettracker.TicketTracker.UnionDescriptor buildPartial() {
         com.jooms.tickettracker.TicketTracker.UnionDescriptor result = new com.jooms.tickettracker.TicketTracker.UnionDescriptor(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          if (TicketBuilder_ == null) {
-            result.Ticket_ = Ticket_;
-          } else {
-            result.Ticket_ = TicketBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000001;
+        if (TicketBuilder_ == null) {
+          result.Ticket_ = Ticket_;
+        } else {
+          result.Ticket_ = TicketBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1717,19 +1584,18 @@ public final class TicketTracker {
         }
         return this;
       }
-      private int bitField0_;
 
       private com.jooms.tickettracker.TicketTracker.Ticket Ticket_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.jooms.tickettracker.TicketTracker.Ticket, com.jooms.tickettracker.TicketTracker.Ticket.Builder, com.jooms.tickettracker.TicketTracker.TicketOrBuilder> TicketBuilder_;
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public boolean hasTicket() {
-        return ((bitField0_ & 0x00000001) != 0);
+        return TicketBuilder_ != null || Ticket_ != null;
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public com.jooms.tickettracker.TicketTracker.Ticket getTicket() {
         if (TicketBuilder_ == null) {
@@ -1739,7 +1605,7 @@ public final class TicketTracker {
         }
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public Builder setTicket(com.jooms.tickettracker.TicketTracker.Ticket value) {
         if (TicketBuilder_ == null) {
@@ -1751,11 +1617,11 @@ public final class TicketTracker {
         } else {
           TicketBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public Builder setTicket(
           com.jooms.tickettracker.TicketTracker.Ticket.Builder builderForValue) {
@@ -1765,17 +1631,15 @@ public final class TicketTracker {
         } else {
           TicketBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public Builder mergeTicket(com.jooms.tickettracker.TicketTracker.Ticket value) {
         if (TicketBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0) &&
-              Ticket_ != null &&
-              Ticket_ != com.jooms.tickettracker.TicketTracker.Ticket.getDefaultInstance()) {
+          if (Ticket_ != null) {
             Ticket_ =
               com.jooms.tickettracker.TicketTracker.Ticket.newBuilder(Ticket_).mergeFrom(value).buildPartial();
           } else {
@@ -1785,32 +1649,33 @@ public final class TicketTracker {
         } else {
           TicketBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+
         return this;
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public Builder clearTicket() {
         if (TicketBuilder_ == null) {
           Ticket_ = null;
           onChanged();
         } else {
-          TicketBuilder_.clear();
+          Ticket_ = null;
+          TicketBuilder_ = null;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public com.jooms.tickettracker.TicketTracker.Ticket.Builder getTicketBuilder() {
-        bitField0_ |= 0x00000001;
+        
         onChanged();
         return getTicketFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       public com.jooms.tickettracker.TicketTracker.TicketOrBuilder getTicketOrBuilder() {
         if (TicketBuilder_ != null) {
@@ -1821,7 +1686,7 @@ public final class TicketTracker {
         }
       }
       /**
-       * <code>optional .Ticket _Ticket = 1;</code>
+       * <code>.Ticket _Ticket = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.jooms.tickettracker.TicketTracker.Ticket, com.jooms.tickettracker.TicketTracker.Ticket.Builder, com.jooms.tickettracker.TicketTracker.TicketOrBuilder> 
@@ -1862,7 +1727,7 @@ public final class TicketTracker {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<UnionDescriptor>
+    private static final com.google.protobuf.Parser<UnionDescriptor>
         PARSER = new com.google.protobuf.AbstractParser<UnionDescriptor>() {
       @java.lang.Override
       public UnionDescriptor parsePartialFrom(
@@ -1913,9 +1778,10 @@ public final class TicketTracker {
       "ey\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\023\n\013description\030\004" +
       " \001(\t\022\031\n\004type\030\005 \001(\0162\013.TicketType\"2\n\017Union" +
       "Descriptor\022\030\n\007_Ticket\030\001 \001(\0132\007.Ticket:\005\212M" +
-      "\002\010\002*E\n\nTicketType\022\010\n\004Work\020\001\022\024\n\020NewFuncti" +
-      "onality\020\002\022\027\n\023BrokenFunctionality\020\003B(\n\027co" +
-      "m.jooms.tickettrackerB\rTicketTracker"
+      "\002\010\002*E\n\nTicketType\022\010\n\004Work\020\000\022\024\n\020NewFuncti" +
+      "onality\020\001\022\027\n\023BrokenFunctionality\020\002B(\n\027co" +
+      "m.jooms.tickettrackerB\rTicketTrackerb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

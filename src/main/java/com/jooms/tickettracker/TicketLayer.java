@@ -96,7 +96,7 @@ public class TicketLayer {
         return TicketTracker.Ticket.newBuilder().mergeFrom(msg.getRecord()).build();
     }
 
-    public void get(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, TicketTracker.Ticket t) {
+    public void save(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, TicketTracker.Ticket t) {
         db.run(context ->
            recordStoreProvider.apply(context).saveRecord(t)
         );

@@ -24,15 +24,15 @@ public class Demo {
         String target = "localhost:" + port;
 
         // Create DB
-        // FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
+        FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
 
         // Set up DAL
-        // TicketLayer tl = new TicketLayer(db);
+        TicketLayer tl = new TicketLayer(db);
 
         // Create Server with DAL
         TicketTrackerServer serv;
         try {
-            serv = new TicketTrackerServer(port);
+            serv = new TicketTrackerServer(port, tl);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -54,10 +54,19 @@ public class Demo {
         .build();
         TicketTrackerClient cl = new TicketTrackerClient(channel);
 
-        // Send Request
-        cl.sayHello("Sup cats");
-        channel.shutdown();
 
+        // Craft Ticket
+        TicketTracker.Ticket t = TicketLayer.buildTicket(5, TicketLayer.ticketType.WORK, "fifth", "The fifth one", "Still no description");
+
+        // Create Ticket
+        // cl.sayHello("Sup cats");
+        cl.createTicket(t);
+
+        // Get Ticket
+        TicketTracker.Ticket rt = cl.getTicket(t.getId());
+        System.out.println("Got ticket: " + rt);
+
+        channel.shutdown();
         // Block Until Shutdown
         // try {
         //     serv.blockUntilShutdown();
@@ -66,7 +75,6 @@ public class Demo {
         //     e.printStackTrace();
         // }
 
-        // TicketTracker.Ticket t = TicketLayer.buildTicket(1, TicketLayer.ticketType.WORK, "first", "The first one", "No description");
         // TicketTracker.Ticket t2 = TicketLayer.buildTicket(2, TicketLayer.ticketType.NEW_FUNCTIONALITY, "second", "new functionality", "Add stuff");
 
         // Function<FDBRecordContext, FDBRecordStore> rsProvider = tl.getRecordStoreProvider();

@@ -22,9 +22,6 @@ public class TicketTrackerClient {
     asyncStub = TicketTrackerGrpc.newStub(channel);
   }
 
-  /**
-   * Blocking unary call example.  Calls getFeature and prints the response.
-   */
   public void sayHello(String msg) {
     info("*** Saying Hello: {0}", msg);
 
@@ -38,6 +35,37 @@ public class TicketTrackerClient {
     }
 
     info("*** Saw goodbye: {0}", gmsg);
+  }
+
+  public void createTicket(TicketTracker.Ticket t) {
+    info("*** Creating ticket: {0}", t);
+
+    CreateTicketRequest req = CreateTicketRequest.newBuilder().setTicket(t).build();
+    CreateTicketResponse resp;
+    try {
+      resp = blockingStub.createTicket(req);
+    } catch (StatusRuntimeException e) {
+      warning("RPC failed: {0}", e.getStatus());
+      return;
+    }
+
+    info("*** Saw response: {0}", resp);
+  }
+
+  public TicketTracker.Ticket getTicket(int id) {
+    info("*** Getting ticket: {0}", id);
+
+    GetTicketRequest req = GetTicketRequest.newBuilder().setTicketId(id).build();
+    GetTicketResponse resp;
+    try {
+      resp = blockingStub.getTicket(req);
+    } catch (StatusRuntimeException e) {
+      warning("RPC failed: {0}", e.getStatus());
+      return null;
+    }
+
+    info("*** Saw response: {0}", resp);
+    return resp.getTicket();
   }
 
   private void info(String msg, Object... params) {
