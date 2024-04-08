@@ -1,22 +1,28 @@
-package com.jooms.tickettracker;
-
-import io.grpc.Channel;
-import io.grpc.StatusRuntimeException;
+package com.jooms.tickettracker.client;
 
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
+import io.grpc.Channel;
+import io.grpc.StatusRuntimeException;
+
+import com.jooms.tickettracker.GoodbyeMessage;
+import com.jooms.tickettracker.HelloMessage;
+import com.jooms.tickettracker.TicketTracker;
+import com.jooms.tickettracker.CreateTicketRequest;
+import com.jooms.tickettracker.CreateTicketResponse;
+import com.jooms.tickettracker.GetTicketRequest;
+import com.jooms.tickettracker.GetTicketResponse;
+import com.jooms.tickettracker.TicketTrackerGrpc;
 import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerBlockingStub;
 import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerStub;
 
-
 public class TicketTrackerClient {
-    private static final Logger logger = Logger.getLogger(TicketTrackerClient.class.getName());
+  private static final Logger logger = Logger.getLogger(TicketTrackerClient.class.getName());
 
   private final TicketTrackerBlockingStub blockingStub;
   private final TicketTrackerStub asyncStub;
 
-  /** Construct client for accessing RouteGuide server using the existing channel. */
   public TicketTrackerClient(Channel channel) {
     blockingStub = TicketTrackerGrpc.newBlockingStub(channel);
     asyncStub = TicketTrackerGrpc.newStub(channel);
@@ -77,5 +83,5 @@ public class TicketTrackerClient {
     msg = "CLIENT:" + msg;
     logger.log(Level.WARNING, msg, params);
   }
-  
+
 }

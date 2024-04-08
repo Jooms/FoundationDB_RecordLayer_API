@@ -1,9 +1,4 @@
-package com.jooms.tickettracker;
-
-import io.grpc.Grpc;
-import io.grpc.InsecureServerCredentials;
-import io.grpc.Server;
-import io.grpc.stub.StreamObserver;
+package com.jooms.tickettracker.server;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -11,21 +6,29 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.function.Function;
 
-
+import io.grpc.Grpc;
+import io.grpc.InsecureServerCredentials;
+import io.grpc.Server;
+import io.grpc.stub.StreamObserver;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
+
+import com.jooms.tickettracker.CreateTicketResponse;
+import com.jooms.tickettracker.GetTicketRequest;
+import com.jooms.tickettracker.GetTicketResponse;
+import com.jooms.tickettracker.GoodbyeMessage;
+import com.jooms.tickettracker.TicketTrackerGrpc;
 import com.jooms.tickettracker.TicketTracker.Ticket;
+import com.jooms.tickettracker.data.TicketLayer;
 
 public class TicketTrackerServer {
   private static final Logger logger = Logger.getLogger(TicketTrackerServer.class.getName());
 
   private final int port;
   private final Server server;
-  private final TicketLayer ticketLayer;
 
   public TicketTrackerServer(int port, TicketLayer ticketLayer) throws IOException {
     this.port = port;
-    this.ticketLayer = ticketLayer;
 
     server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
         .addService(new TicketTrackerService(ticketLayer)).build();
@@ -78,7 +81,8 @@ public class TicketTrackerServer {
     }
 
     @Override
-    public void createTicket(com.jooms.tickettracker.CreateTicketRequest request, StreamObserver<com.jooms.tickettracker.CreateTicketResponse> responseObserver) {
+    public void createTicket(com.jooms.tickettracker.CreateTicketRequest request,
+        StreamObserver<com.jooms.tickettracker.CreateTicketResponse> responseObserver) {
       Ticket pbt = request.getTicket();
       ticketLayer.save(this.rsp, pbt);
       responseObserver.onNext(CreateTicketResponse.getDefaultInstance());
@@ -99,7 +103,7 @@ public class TicketTrackerServer {
           responseObserver.onCompleted();
           return;
       }
-      
+
       GetTicketResponse gtr = GetTicketResponse.newBuilder().setTicket(t).build();
       responseObserver.onNext(gtr);
       responseObserver.onCompleted();

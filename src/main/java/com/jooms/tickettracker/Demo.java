@@ -1,19 +1,16 @@
 package com.jooms.tickettracker;
 
 import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 
 import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase;
 import com.apple.foundationdb.record.provider.foundationdb.FDBDatabaseFactory;
-import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext;
-import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
-
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 
+import com.jooms.tickettracker.client.TicketTrackerClient;
+import com.jooms.tickettracker.data.TicketLayer;
+import com.jooms.tickettracker.server.TicketTrackerServer;
 
 public class Demo {
     
@@ -34,7 +31,6 @@ public class Demo {
         try {
             serv = new TicketTrackerServer(port, tl);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return;
         }
@@ -43,7 +39,6 @@ public class Demo {
         try {
             serv.start();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return;
         }
@@ -59,14 +54,12 @@ public class Demo {
         TicketTracker.Ticket t = TicketLayer.buildTicket(5, TicketLayer.ticketType.WORK, "fifth", "The fifth one", "Still no description");
 
         // Create Ticket
-        // cl.sayHello("Sup cats");
         cl.createTicket(t);
 
         // Get Ticket
         TicketTracker.Ticket rt = cl.getTicket(t.getId());
         System.out.println("Got ticket: " + rt);
 
-        channel.shutdown();
         // Block Until Shutdown
         // try {
         //     serv.blockUntilShutdown();
@@ -74,32 +67,7 @@ public class Demo {
         //     // TODO Auto-generated catch block
         //     e.printStackTrace();
         // }
-
-        // TicketTracker.Ticket t2 = TicketLayer.buildTicket(2, TicketLayer.ticketType.NEW_FUNCTIONALITY, "second", "new functionality", "Add stuff");
-
-        // Function<FDBRecordContext, FDBRecordStore> rsProvider = tl.getRecordStoreProvider();
-        // db.run(context -> {
-        //     FDBRecordStore recordStore = rsProvider.apply(context);
-
-        //     TicketLayer.save(recordStore, t);
-        //     TicketLayer.save(recordStore, t2);
-
-        //     return null;
-        // });
-
-        // TicketTracker.Ticket t3 = tl.get(rsProvider, t.getId());
-        // System.out.println(t3);
-
-
-        // db.run(context -> {
-        //     FDBRecordStore recordStore = rsProvider.apply(context);
-
-        //     TicketTracker.Ticket t4 = TicketLayer.get(recordStore, t2.getId());
-        //     System.out.println(t4);
-
-        //     return null;
-        // });
-
+        channel.shutdown();
 
         System.out.println("ENDING!!!");
     }

@@ -1,4 +1,4 @@
-package com.jooms.tickettracker;
+package com.jooms.tickettracker.data;
 
 import java.util.function.Function;
 
@@ -15,6 +15,7 @@ import com.apple.foundationdb.record.provider.foundationdb.keyspace.KeySpacePath
 import com.apple.foundationdb.tuple.Tuple;
 import com.google.protobuf.Message;
 
+import com.jooms.tickettracker.TicketTracker;
 
 public class TicketLayer {
     private KeySpacePath path;
@@ -30,16 +31,18 @@ public class TicketLayer {
     public TicketLayer(FDBDatabase db) {
         this.db = db;
 
-        KeySpace keySpace = new KeySpace(new KeySpaceDirectory("TicketTracker", KeySpaceDirectory.KeyType.STRING, "TicketTracker"));
+        KeySpace keySpace = new KeySpace(
+                new KeySpaceDirectory("TicketTracker", KeySpaceDirectory.KeyType.STRING, "TicketTracker"));
         path = keySpace.path("TicketTracker");
 
         RecordMetaDataBuilder metaDataBuilder = RecordMetaData.newBuilder()
-        .setRecords(TicketTracker.getDescriptor());
+                .setRecords(TicketTracker.getDescriptor());
 
         metaDataBuilder.getRecordType("Ticket")
-        .setPrimaryKey(Key.Expressions.field("id"));
+                .setPrimaryKey(Key.Expressions.field("id"));
 
-        // metaDataBuilder.addIndex("Ticket", new Index("priceIndex", Key.Expressions.field("price")));
+        // metaDataBuilder.addIndex("Ticket", new Index("priceIndex",
+        // Key.Expressions.field("price")));
 
         recordMetaData = metaDataBuilder.build();
     }
@@ -70,24 +73,22 @@ public class TicketLayer {
             t.setDescription(desc);
         }
 
-        return  t.build();
+        return t.build();
     }
 
     public Function<FDBRecordContext, FDBRecordStore> getRecordStoreProvider() {
         Function<FDBRecordContext, FDBRecordStore> recordStoreProvider = context -> FDBRecordStore.newBuilder()
-        .setMetaDataProvider(this.recordMetaData)
-        .setContext(context)
-        .setKeySpacePath(this.path)
-        .createOrOpen();
+                .setMetaDataProvider(this.recordMetaData)
+                .setContext(context)
+                .setKeySpacePath(this.path)
+                .createOrOpen();
 
         return recordStoreProvider;
     }
 
     // Non-static gets and saves
     public TicketTracker.Ticket get(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, int id) {
-        FDBStoredRecord<Message> msg = db.run(context ->
-            recordStoreProvider.apply(context).loadRecord(Tuple.from(id))
-        );
+        FDBStoredRecord<Message> msg = db.run(context -> recordStoreProvider.apply(context).loadRecord(Tuple.from(id)));
 
         if (msg == null) {
             return null;
@@ -97,21 +98,19 @@ public class TicketLayer {
     }
 
     public void save(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, TicketTracker.Ticket t) {
-        db.run(context ->
-           recordStoreProvider.apply(context).saveRecord(t)
-        );
-   }
-    
+        db.run(context -> recordStoreProvider.apply(context).saveRecord(t));
+    }
+
     // Static Gets and Saves
     public static TicketTracker.Ticket get(FDBRecordStore recordStore, int id) {
         FDBStoredRecord<Message> msg = recordStore.loadRecord(Tuple.from(id));
 
-       if (msg == null) {
-           return null;
-       }
+        if (msg == null) {
+            return null;
+        }
 
-       return TicketTracker.Ticket.newBuilder().mergeFrom(msg.getRecord()).build();
-   }
+        return TicketTracker.Ticket.newBuilder().mergeFrom(msg.getRecord()).build();
+    }
 
     public static void save(FDBRecordStore recordStore, TicketTracker.Ticket t) {
         recordStore.saveRecord(t);
