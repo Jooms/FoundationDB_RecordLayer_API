@@ -10,6 +10,9 @@ import io.grpc.Grpc;
 import io.grpc.InsecureServerCredentials;
 import io.grpc.Server;
 import io.grpc.stub.StreamObserver;
+
+import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase;
+import com.apple.foundationdb.record.provider.foundationdb.FDBDatabaseFactory;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
 
@@ -119,4 +122,44 @@ public class TicketTrackerServer {
     msg = "Server: " + msg;
     logger.log(Level.WARNING, msg, params);
   }
+
+  public static void main(String[] args) {
+        System.out.println("STARTING!!!");
+
+        int port = 8000;
+        String target = "localhost:" + port;
+
+        // Create DB
+        FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
+
+        // Set up DAL
+        TicketLayer tl = new TicketLayer(db);
+
+        // Create Server with DAL
+        TicketTrackerServer serv;
+        try {
+            serv = new TicketTrackerServer(port, tl);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        // Start Server
+        try {
+            serv.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        // Block Until Shutdown
+        try {
+            serv.blockUntilShutdown();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        System.out.println("\nENDING!!!");
+    }
 }

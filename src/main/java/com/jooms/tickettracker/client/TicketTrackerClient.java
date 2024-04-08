@@ -1,14 +1,20 @@
 package com.jooms.tickettracker.client;
 
 import java.util.logging.Logger;
+import java.io.IOException;
 import java.util.logging.Level;
 
 import io.grpc.Channel;
+import io.grpc.Grpc;
+import io.grpc.InsecureChannelCredentials;
+import io.grpc.ManagedChannel;
 import io.grpc.StatusRuntimeException;
 
 import com.jooms.tickettracker.GoodbyeMessage;
 import com.jooms.tickettracker.HelloMessage;
 import com.jooms.tickettracker.TicketTracker;
+import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase;
+import com.apple.foundationdb.record.provider.foundationdb.FDBDatabaseFactory;
 import com.jooms.tickettracker.CreateTicketRequest;
 import com.jooms.tickettracker.CreateTicketResponse;
 import com.jooms.tickettracker.GetTicketRequest;
@@ -16,6 +22,8 @@ import com.jooms.tickettracker.GetTicketResponse;
 import com.jooms.tickettracker.TicketTrackerGrpc;
 import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerBlockingStub;
 import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerStub;
+import com.jooms.tickettracker.data.TicketLayer;
+import com.jooms.tickettracker.server.TicketTrackerServer;
 
 public class TicketTrackerClient {
   private static final Logger logger = Logger.getLogger(TicketTrackerClient.class.getName());
@@ -84,4 +92,30 @@ public class TicketTrackerClient {
     logger.log(Level.WARNING, msg, params);
   }
 
+  public static void main(String[] args) {
+    System.out.println("STARTING!!!");
+
+    int port = 8000;
+    String target = "localhost:" + port;
+
+    // Create Client
+    ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
+        .build();
+    TicketTrackerClient cl = new TicketTrackerClient(channel);
+
+    // Craft Ticket
+    TicketTracker.Ticket t = TicketLayer.buildTicket(6, TicketLayer.ticketType.WORK, "Sixes", "cat",
+        "Still no description");
+
+    // Create Ticket
+    cl.createTicket(t);
+
+    // Get Ticket
+    TicketTracker.Ticket rt = cl.getTicket(t.getId());
+    System.out.println("Got ticket: " + rt);
+
+    channel.shutdown();
+
+    System.out.println("ENDING!!!");
+  }
 }
