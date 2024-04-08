@@ -10,6 +10,7 @@ service TicketTracker {
     rpc SayHello(HelloMessage) returns (GoodbyeMessage) {}
     rpc CreateTicket(CreateTicketRequest) returns (CreateTicketResponse) {}
     rpc GetTicket(GetTicketRequest) returns (GetTicketResponse) {}
+    rpc GetTickets(GetTicketsRequest) returns (GetTicketsResponse) {}
 }
 
 message HelloMessage {
@@ -35,4 +36,11 @@ message GetTicketRequest {
 message GetTicketResponse {
     bool found = 1;
     Ticket ticket = 2;
+}
+
+message GetTicketsRequest {
+}
+
+message GetTicketsResponse {
+    repeated Ticket tickets = 1;
 }

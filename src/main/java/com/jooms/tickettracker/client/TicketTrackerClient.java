@@ -2,6 +2,7 @@ package com.jooms.tickettracker.client;
 
 import java.util.logging.Logger;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 
 import io.grpc.Channel;
@@ -19,6 +20,8 @@ import com.jooms.tickettracker.CreateTicketRequest;
 import com.jooms.tickettracker.CreateTicketResponse;
 import com.jooms.tickettracker.GetTicketRequest;
 import com.jooms.tickettracker.GetTicketResponse;
+import com.jooms.tickettracker.GetTicketsRequest;
+import com.jooms.tickettracker.GetTicketsResponse;
 import com.jooms.tickettracker.TicketTrackerGrpc;
 import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerBlockingStub;
 import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerStub;
@@ -80,6 +83,22 @@ public class TicketTrackerClient {
 
     info("*** Saw response: {0}", resp);
     return resp.getTicket();
+  }
+
+  public List<TicketTracker.Ticket> getTickets() {
+    info("*** Getting ticket s:");
+
+    GetTicketsRequest req = GetTicketsRequest.newBuilder().build();
+    GetTicketsResponse resp;
+    try {
+      resp = blockingStub.getTickets(req);
+    } catch (StatusRuntimeException e) {
+      warning("RPC failed: {0}", e.getStatus());
+      return null;
+    }
+
+    info("*** Saw response: {0}", resp);
+    return resp.getTicketsList();
   }
 
   private void info(String msg, Object... params) {

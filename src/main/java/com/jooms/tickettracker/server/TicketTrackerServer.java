@@ -1,6 +1,7 @@
 package com.jooms.tickettracker.server;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,8 @@ import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
 import com.jooms.tickettracker.CreateTicketResponse;
 import com.jooms.tickettracker.GetTicketRequest;
 import com.jooms.tickettracker.GetTicketResponse;
+import com.jooms.tickettracker.GetTicketsRequest;
+import com.jooms.tickettracker.GetTicketsResponse;
 import com.jooms.tickettracker.GoodbyeMessage;
 import com.jooms.tickettracker.TicketTrackerGrpc;
 import com.jooms.tickettracker.TicketTracker.Ticket;
@@ -98,7 +101,7 @@ public class TicketTrackerServer {
       switch (request.getSearchParamCase()) {
         case TICKET_ID:
           int tid = request.getTicketId();
-          t = ticketLayer.get(rsp, tid);
+          t = ticketLayer.get(this.rsp, tid);
           break;
         default:
           warning("getTicket didn't include a recognized search param", request);
@@ -109,6 +112,20 @@ public class TicketTrackerServer {
 
       GetTicketResponse gtr = GetTicketResponse.newBuilder().setTicket(t).build();
       responseObserver.onNext(gtr);
+      responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getTickets(GetTicketsRequest request, StreamObserver<GetTicketsResponse> responseObserver) {
+      ArrayList<Ticket> tickets;
+
+      tickets = ticketLayer.getMultiple(this.rsp);
+
+      GetTicketsResponse.Builder gtr = GetTicketsResponse.newBuilder();
+      for (Ticket t: tickets) {
+        gtr.addTickets(t);
+      }
+      responseObserver.onNext(gtr.build());
       responseObserver.onCompleted();
     }
   }
@@ -160,6 +177,6 @@ public class TicketTrackerServer {
             e.printStackTrace();
         }
 
-        System.out.println("\nENDING!!!");
+        System.out.println("ENDING!!!");
     }
 }

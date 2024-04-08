@@ -1,26 +1,38 @@
 package com.jooms.tickettracker.data;
 
+import java.util.ArrayList;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
+import com.apple.foundationdb.record.RecordCursor;
+import com.apple.foundationdb.record.RecordCursorIterator;
+import com.apple.foundationdb.record.RecordCursorResult;
 import com.apple.foundationdb.record.RecordMetaData;
 import com.apple.foundationdb.record.RecordMetaDataBuilder;
 import com.apple.foundationdb.record.metadata.Key;
 import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase;
+import com.apple.foundationdb.record.provider.foundationdb.FDBQueriedRecord;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
 import com.apple.foundationdb.record.provider.foundationdb.FDBStoredRecord;
 import com.apple.foundationdb.record.provider.foundationdb.keyspace.KeySpace;
 import com.apple.foundationdb.record.provider.foundationdb.keyspace.KeySpaceDirectory;
 import com.apple.foundationdb.record.provider.foundationdb.keyspace.KeySpacePath;
+import com.apple.foundationdb.record.query.RecordQuery;
+import com.apple.foundationdb.record.query.expressions.Query;
 import com.apple.foundationdb.tuple.Tuple;
 import com.google.protobuf.Message;
 
 import com.jooms.tickettracker.TicketTracker;
+import com.jooms.tickettracker.TicketTracker.Ticket;
+import com.jooms.tickettracker.TicketTracker.TicketType;
 
 public class TicketLayer {
-    private KeySpacePath path;
-    private FDBDatabase db;
-    private RecordMetaData recordMetaData;
+    final private KeySpacePath path;
+    final private FDBDatabase db;
+    final private RecordMetaData recordMetaData;
+    final private static String recordType = "Ticket";
+    final private static String primaryKey = "id";
 
     public enum ticketType {
         WORK,
@@ -38,8 +50,8 @@ public class TicketLayer {
         RecordMetaDataBuilder metaDataBuilder = RecordMetaData.newBuilder()
                 .setRecords(TicketTracker.getDescriptor());
 
-        metaDataBuilder.getRecordType("Ticket")
-                .setPrimaryKey(Key.Expressions.field("id"));
+        metaDataBuilder.getRecordType(TicketLayer.recordType)
+                .setPrimaryKey(Key.Expressions.field(TicketLayer.primaryKey));
 
         // metaDataBuilder.addIndex("Ticket", new Index("priceIndex",
         // Key.Expressions.field("price")));
@@ -47,18 +59,18 @@ public class TicketLayer {
         recordMetaData = metaDataBuilder.build();
     }
 
-    public static TicketTracker.Ticket buildTicket(int id, ticketType type, String key, String title, String desc) {
-        TicketTracker.Ticket.Builder t = TicketTracker.Ticket.newBuilder().setId(id);
+    public static Ticket buildTicket(int id, ticketType type, String key, String title, String desc) {
+        Ticket.Builder t = Ticket.newBuilder().setId(id);
 
         switch (type) {
             case WORK:
-                t.setType(TicketTracker.TicketType.Work);
+                t.setType(TicketType.Work);
                 break;
             case NEW_FUNCTIONALITY:
-                t.setType(TicketTracker.TicketType.NewFunctionality);
+                t.setType(TicketType.NewFunctionality);
                 break;
             case BROKEN_FUNCTIONALITY:
-                t.setType(TicketTracker.TicketType.BrokenFunctionality);
+                t.setType(TicketType.BrokenFunctionality);
                 break;
             default:
                 break;
@@ -87,32 +99,56 @@ public class TicketLayer {
     }
 
     // Non-static gets and saves
-    public TicketTracker.Ticket get(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, int id) {
-        FDBStoredRecord<Message> msg = db.run(context -> recordStoreProvider.apply(context).loadRecord(Tuple.from(id)));
-
-        if (msg == null) {
-            return null;
-        }
-
-        return TicketTracker.Ticket.newBuilder().mergeFrom(msg.getRecord()).build();
+    public Ticket get(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, int id) {
+        return db.run(context -> {
+                return get(recordStoreProvider.apply(context), id);
+            }
+        );
     }
 
-    public void save(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, TicketTracker.Ticket t) {
-        db.run(context -> recordStoreProvider.apply(context).saveRecord(t));
+    public ArrayList<Ticket> getMultiple(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider) {
+        return db.run(context -> {
+            return getMultiple(recordStoreProvider.apply(context));
+            }
+        );
+    }
+
+    public void save(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, Ticket t) {
+        db.run(context -> save(recordStoreProvider.apply(context), t));
     }
 
     // Static Gets and Saves
-    public static TicketTracker.Ticket get(FDBRecordStore recordStore, int id) {
+    public static Ticket get(FDBRecordStore recordStore, int id) {
         FDBStoredRecord<Message> msg = recordStore.loadRecord(Tuple.from(id));
 
         if (msg == null) {
             return null;
         }
 
-        return TicketTracker.Ticket.newBuilder().mergeFrom(msg.getRecord()).build();
+        return Ticket.newBuilder().mergeFrom(msg.getRecord()).build();
     }
 
-    public static void save(FDBRecordStore recordStore, TicketTracker.Ticket t) {
-        recordStore.saveRecord(t);
+    private static ArrayList<Ticket> getMultiple(FDBRecordStore recordStore) {
+        RecordQuery query = RecordQuery.newBuilder()
+        .setRecordType(TicketLayer.recordType)
+        .setSort(Key.Expressions.field(TicketLayer.primaryKey))
+        .build();
+
+        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+        
+        try (RecordCursor<FDBQueriedRecord<Message>> cursor = recordStore.executeQuery(query)) {
+            RecordCursorIterator<FDBQueriedRecord<Message>> iter = cursor.asIterator();
+            while (iter.hasNext()) {
+                FDBQueriedRecord<Message> rec = iter.next();
+                Ticket t = Ticket.newBuilder().mergeFrom(rec.getRecord()).build();
+                tickets.add(t);
+            }
+         }
+
+        return tickets;
+    }
+
+    public static FDBStoredRecord<Message> save(FDBRecordStore recordStore, Ticket t) {
+        return recordStore.saveRecord(t);
     }
 }

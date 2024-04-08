@@ -108,6 +108,37 @@ public final class TicketTrackerGrpc {
     return getGetTicketMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.jooms.tickettracker.GetTicketsRequest,
+      com.jooms.tickettracker.GetTicketsResponse> getGetTicketsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetTickets",
+      requestType = com.jooms.tickettracker.GetTicketsRequest.class,
+      responseType = com.jooms.tickettracker.GetTicketsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.jooms.tickettracker.GetTicketsRequest,
+      com.jooms.tickettracker.GetTicketsResponse> getGetTicketsMethod() {
+    io.grpc.MethodDescriptor<com.jooms.tickettracker.GetTicketsRequest, com.jooms.tickettracker.GetTicketsResponse> getGetTicketsMethod;
+    if ((getGetTicketsMethod = TicketTrackerGrpc.getGetTicketsMethod) == null) {
+      synchronized (TicketTrackerGrpc.class) {
+        if ((getGetTicketsMethod = TicketTrackerGrpc.getGetTicketsMethod) == null) {
+          TicketTrackerGrpc.getGetTicketsMethod = getGetTicketsMethod =
+              io.grpc.MethodDescriptor.<com.jooms.tickettracker.GetTicketsRequest, com.jooms.tickettracker.GetTicketsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetTickets"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.GetTicketsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.GetTicketsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new TicketTrackerMethodDescriptorSupplier("GetTickets"))
+              .build();
+        }
+      }
+    }
+    return getGetTicketsMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -176,6 +207,13 @@ public final class TicketTrackerGrpc {
         io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTicketMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getTickets(com.jooms.tickettracker.GetTicketsRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTicketsMethod(), responseObserver);
+    }
   }
 
   /**
@@ -228,6 +266,14 @@ public final class TicketTrackerGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetTicketMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getTickets(com.jooms.tickettracker.GetTicketsRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetTicketsMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -265,6 +311,13 @@ public final class TicketTrackerGrpc {
     public com.jooms.tickettracker.GetTicketResponse getTicket(com.jooms.tickettracker.GetTicketRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetTicketMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.jooms.tickettracker.GetTicketsResponse getTickets(com.jooms.tickettracker.GetTicketsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetTicketsMethod(), getCallOptions(), request);
     }
   }
 
@@ -307,11 +360,20 @@ public final class TicketTrackerGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetTicketMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.jooms.tickettracker.GetTicketsResponse> getTickets(
+        com.jooms.tickettracker.GetTicketsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetTicketsMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SAY_HELLO = 0;
   private static final int METHODID_CREATE_TICKET = 1;
   private static final int METHODID_GET_TICKET = 2;
+  private static final int METHODID_GET_TICKETS = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -341,6 +403,10 @@ public final class TicketTrackerGrpc {
         case METHODID_GET_TICKET:
           serviceImpl.getTicket((com.jooms.tickettracker.GetTicketRequest) request,
               (io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketResponse>) responseObserver);
+          break;
+        case METHODID_GET_TICKETS:
+          serviceImpl.getTickets((com.jooms.tickettracker.GetTicketsRequest) request,
+              (io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -381,6 +447,13 @@ public final class TicketTrackerGrpc {
               com.jooms.tickettracker.GetTicketRequest,
               com.jooms.tickettracker.GetTicketResponse>(
                 service, METHODID_GET_TICKET)))
+        .addMethod(
+          getGetTicketsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.jooms.tickettracker.GetTicketsRequest,
+              com.jooms.tickettracker.GetTicketsResponse>(
+                service, METHODID_GET_TICKETS)))
         .build();
   }
 
@@ -432,6 +505,7 @@ public final class TicketTrackerGrpc {
               .addMethod(getSayHelloMethod())
               .addMethod(getCreateTicketMethod())
               .addMethod(getGetTicketMethod())
+              .addMethod(getGetTicketsMethod())
               .build();
         }
       }

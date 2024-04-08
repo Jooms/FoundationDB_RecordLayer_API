@@ -44,6 +44,16 @@ public final class TicketTrackerService {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetTicketResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetTicketsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetTicketsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetTicketsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetTicketsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -60,13 +70,16 @@ public final class TicketTrackerService {
       "et\"\026\n\024CreateTicketResponse\"7\n\020GetTicketR" +
       "equest\022\023\n\tticket_id\030\001 \001(\005H\000B\016\n\014search_pa" +
       "ram\";\n\021GetTicketResponse\022\r\n\005found\030\001 \001(\010\022" +
-      "\027\n\006ticket\030\002 \001(\0132\007.Ticket2\262\001\n\rTicketTrack" +
-      "er\022,\n\010SayHello\022\r.HelloMessage\032\017.GoodbyeM" +
-      "essage\"\000\022=\n\014CreateTicket\022\024.CreateTicketR" +
-      "equest\032\025.CreateTicketResponse\"\000\0224\n\tGetTi" +
-      "cket\022\021.GetTicketRequest\032\022.GetTicketRespo" +
-      "nse\"\000B1\n\027com.jooms.tickettrackerB\024Ticket" +
-      "TrackerServiceP\001b\006proto3"
+      "\027\n\006ticket\030\002 \001(\0132\007.Ticket\"\023\n\021GetTicketsRe" +
+      "quest\".\n\022GetTicketsResponse\022\030\n\007tickets\030\001" +
+      " \003(\0132\007.Ticket2\353\001\n\rTicketTracker\022,\n\010SayHe" +
+      "llo\022\r.HelloMessage\032\017.GoodbyeMessage\"\000\022=\n" +
+      "\014CreateTicket\022\024.CreateTicketRequest\032\025.Cr" +
+      "eateTicketResponse\"\000\0224\n\tGetTicket\022\021.GetT" +
+      "icketRequest\032\022.GetTicketResponse\"\000\0227\n\nGe" +
+      "tTickets\022\022.GetTicketsRequest\032\023.GetTicket" +
+      "sResponse\"\000B1\n\027com.jooms.tickettrackerB\024" +
+      "TicketTrackerServiceP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -109,6 +122,18 @@ public final class TicketTrackerService {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetTicketResponse_descriptor,
         new java.lang.String[] { "Found", "Ticket", });
+    internal_static_GetTicketsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_GetTicketsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetTicketsRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_GetTicketsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_GetTicketsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetTicketsResponse_descriptor,
+        new java.lang.String[] { "Tickets", });
     com.jooms.tickettracker.TicketTracker.getDescriptor();
   }
 
