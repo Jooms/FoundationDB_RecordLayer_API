@@ -18,10 +18,19 @@ public class Cli {
 
     static String USAGE = "cli [host] [port] [command] <args ...>\n" +
             "commands:\n" +
-            "\tcreate-single: <amount>";
+            "\tcreate-single: <amount>\n" + 
+            "\tcreate-multiple: <batchSize> <amountOfBatches>\n" + 
+            "\tget-single: <amount>\n" + 
+            "\tget-multiple: <times>\n" + 
+            "\tdelete-all\n";
 
-    private static void Usage() {
+    private static void Usage(String[] args) {
         System.out.println(USAGE);
+
+        System.out.println(String.format("Saw %d arguments:", args.length));
+        for (String arg : args) {
+            System.out.println("\t" + arg);
+        }
     }
 
     private static Ticket randomTicket(int id) {
@@ -45,7 +54,7 @@ public class Cli {
         Durations d = new Durations();
 
         if (args.length < 5) {
-            Usage();
+            Usage(args);
             System.out.println("Missing an amount!");
             return d;
         }
@@ -70,7 +79,7 @@ public class Cli {
         Durations d = new Durations();
 
         if (args.length < 6) {
-            Usage();
+            Usage(args);
             System.out.println("Missing a batchSize and an amount of batches!");
             return d;
         }
@@ -100,7 +109,7 @@ public class Cli {
         Durations d = new Durations();
 
         if (args.length < 5) {
-            Usage();
+            Usage(args);
             System.out.println("Missing an amount!");
             return d;
         }
@@ -124,8 +133,8 @@ public class Cli {
     }
 
     public static void main(String[] args) {
-        if (args.length < 4) {
-            Usage();
+        if (args.length < 3) {
+            Usage(args);
             return;
         }
 
@@ -138,7 +147,7 @@ public class Cli {
         // Create Client
         ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
                 .build();
-        TicketTrackerClient cl = new TicketTrackerClient(channel);
+        TicketTrackerClient cl = new TicketTrackerClient(channel, false);
 
         Durations d = new Durations();
         switch (args[2]) {
@@ -157,9 +166,11 @@ public class Cli {
             case "delete-all":
                 cl.deleteAll();
                 break;
+            default:
+                Usage(args);
         }
 
-        System.out.println(String.format("Command '%s' runtime:", args[0]));
+        System.out.println(String.format("Command '%s' runtime:", args[2]));
         System.out.println(String.format("\tGeneration Time (sec): %d", d.generationTime / 1000000000));
         System.out.println(String.format("\tExecution Time (sec): %d", d.executionTime / 1000000000));
 

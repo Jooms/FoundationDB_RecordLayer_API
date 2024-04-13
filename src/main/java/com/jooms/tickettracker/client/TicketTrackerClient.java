@@ -30,12 +30,17 @@ import com.jooms.tickettracker.data.TicketLayer;
 public class TicketTrackerClient {
   private static final Logger logger = Logger.getLogger(TicketTrackerClient.class.getName());
 
+  private final boolean loggingEnabled;
   private final TicketTrackerBlockingStub blockingStub;
-  // private final TicketTrackerStub asyncStub;
 
   public TicketTrackerClient(Channel channel) {
+    this(channel, true);
+  }
+
+  public TicketTrackerClient(Channel channel, boolean loggingEnabled) {
+    this.loggingEnabled = loggingEnabled;
+
     blockingStub = TicketTrackerGrpc.newBlockingStub(channel);
-    // asyncStub = TicketTrackerGrpc.newStub(channel);
   }
 
   public void sayHello(String msg) {
@@ -132,8 +137,10 @@ public class TicketTrackerClient {
   }
 
   private void info(String msg, Object... params) {
-    msg = "CLIENT:" + msg;
-    logger.log(Level.INFO, msg, params);
+    if (loggingEnabled) {
+      msg = "CLIENT:" + msg;
+      logger.log(Level.INFO, msg, params);
+    }
   }
 
   private void warning(String msg, Object... params) {
