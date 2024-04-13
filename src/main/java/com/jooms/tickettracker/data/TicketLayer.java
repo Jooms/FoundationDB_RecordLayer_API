@@ -146,6 +146,8 @@ public class TicketLayer {
 
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 
+        int limit = 75000;
+
         try (RecordCursor<FDBQueriedRecord<Message>> cursor = recordStore.executeQuery(query)) {
             RecordCursorIterator<FDBQueriedRecord<Message>> iter = cursor.asIterator();
             while (iter.hasNext()) {
@@ -154,8 +156,14 @@ public class TicketLayer {
                     Ticket t = Ticket.newBuilder().mergeFrom(rec.getRecord()).build();
                     tickets.add(t);
                 }
+                if (tickets.size() >= limit) {
+                    System.out.println(String.format("*** Limit of %d reached!", limit));
+                    break;
+                }
             }
         }
+
+        System.out.println(String.format("*** Returning %d records", tickets.size()));
 
         return tickets;
     }

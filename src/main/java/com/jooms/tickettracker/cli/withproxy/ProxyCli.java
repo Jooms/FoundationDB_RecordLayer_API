@@ -1,4 +1,4 @@
-package com.jooms.tickettracker.cli;
+package com.jooms.tickettracker.cli.withproxy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import com.jooms.tickettracker.TicketTracker.Ticket;
 import com.jooms.tickettracker.client.TicketTrackerClient;
 import com.jooms.tickettracker.data.TicketLayer;
 
-public class Cli {
+public class ProxyCli {
     private static Random rand;
 
     static String USAGE = "cli [host] [port] [command] <args ...>\n" +
@@ -53,7 +53,7 @@ public class Cli {
     private static Durations createSingle(String[] args, TicketTrackerClient cl) {
         Durations d = new Durations();
 
-        if (args.length < 5) {
+        if (args.length < 4) {
             Usage(args);
             System.out.println("Missing an amount!");
             return d;
@@ -78,7 +78,7 @@ public class Cli {
     private static Durations createMultiple(String[] args, TicketTrackerClient cl) {
         Durations d = new Durations();
 
-        if (args.length < 6) {
+        if (args.length < 5) {
             Usage(args);
             System.out.println("Missing a batchSize and an amount of batches!");
             return d;
@@ -87,7 +87,7 @@ public class Cli {
         int amount = Integer.parseInt(args[4]);
         ArrayList<ArrayList<Ticket>> ticketsToCreate = new ArrayList<ArrayList<Ticket>>();
         long startTime = System.nanoTime();
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < batchSize; i++) {
             ArrayList<Ticket> batchTickets = new ArrayList<Ticket>();
             for (int j = 0; j < amount; j++) {
                 batchTickets.add(randomTicket(i * batchSize + j));
@@ -95,20 +95,20 @@ public class Cli {
             ticketsToCreate.add(batchTickets);
         }
         d.generationTime = (System.nanoTime() - startTime);
-        System.out.println(String.format("Generated %d tickets!", amount));
+        System.out.println(String.format("Generated %d tickets %d times!", batchSize, amount));
         startTime = System.nanoTime();
-        for (ArrayList<Ticket> t : ticketsToCreate) {
-            cl.createTickets(t);
+        for (ArrayList<Ticket> ts : ticketsToCreate) {
+            cl.createTickets(ts);
         }
         d.executionTime = (System.nanoTime() - startTime);
-        System.out.println(String.format("Created %d tickets!", amount));
+        System.out.println(String.format("Created %d tickets %d times!", batchSize, amount));
         return d;
     }
 
     private static Durations getSingle(String[] args, TicketTrackerClient cl) {
         Durations d = new Durations();
 
-        if (args.length < 5) {
+        if (args.length < 4) {
             Usage(args);
             System.out.println("Missing an amount!");
             return d;
@@ -116,7 +116,14 @@ public class Cli {
         int amount = Integer.parseInt(args[3]);
         long startTime = System.nanoTime();
         // Get all
-        List<Ticket> allTicks = cl.getTickets();
+        List<Ticket> tl = cl.getTickets();
+        if (tl == null) {
+            System.out.println("FAILED TO GET TICKETS!");
+            return d;
+        }
+        ArrayList<Ticket> allTicks = new ArrayList<Ticket>(cl.getTickets());
+        System.out.println(String.format("Found %d tickets!", allTicks.size()));
+
         // Shuffle ids
         Collections.shuffle(allTicks);
         d.generationTime = (System.nanoTime() - startTime);
@@ -129,6 +136,34 @@ public class Cli {
         }
         d.executionTime = (System.nanoTime() - startTime);
         System.out.println(String.format("Read %d tickets!", amount));
+        return d;
+    }
+
+    private static Durations getAll(String[] args, TicketTrackerClient cl) {
+        Durations d = new Durations();
+
+        if (args.length < 4) {
+            Usage(args);
+            System.out.println("Missing a number of times!");
+            return d;
+        }
+        int numTimes = Integer.parseInt(args[3]);
+        long startTime = System.nanoTime();
+        for (int i = 0; i < numTimes; i++) {
+            cl.getTickets();
+        }
+        d.executionTime = (System.nanoTime() - startTime);
+        System.out.println(String.format("Got all ticket %d time(s)!", numTimes));
+        return d;
+    }
+
+    private static Durations deleteAll(TicketTrackerClient cl) {
+        Durations d = new Durations();
+
+        long startTime = System.nanoTime();
+        cl.deleteAll();
+        d.executionTime = (System.nanoTime() - startTime);
+        System.out.println("Deleted all tickets!");
         return d;
     }
 
@@ -161,18 +196,18 @@ public class Cli {
                 d = getSingle(args, cl);
                 break;
             case "get-multiple":
-                System.out.println("NOT IMPLEMENTED");
+                d = getAll(args, cl);
                 break;
             case "delete-all":
-                cl.deleteAll();
+                d = deleteAll(cl);
                 break;
             default:
                 Usage(args);
         }
 
         System.out.println(String.format("Command '%s' runtime:", args[2]));
-        System.out.println(String.format("\tGeneration Time (sec): %d", d.generationTime / 1000000000));
-        System.out.println(String.format("\tExecution Time (sec): %d", d.executionTime / 1000000000));
+        System.out.println(String.format("\tGeneration Time (ms): %d", d.generationTime / 1000000));
+        System.out.println(String.format("\tExecution Time (ms): %d", d.executionTime / 1000000));
 
         channel.shutdown();
     }
