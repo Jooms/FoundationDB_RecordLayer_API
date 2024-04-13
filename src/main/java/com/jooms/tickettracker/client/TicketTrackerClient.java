@@ -15,6 +15,8 @@ import com.jooms.tickettracker.HelloMessage;
 import com.jooms.tickettracker.TicketTracker;
 import com.jooms.tickettracker.CreateTicketRequest;
 import com.jooms.tickettracker.CreateTicketResponse;
+import com.jooms.tickettracker.CreateTicketsRequest;
+import com.jooms.tickettracker.CreateTicketsResponse;
 import com.jooms.tickettracker.DeleteAllRequest;
 import com.jooms.tickettracker.DeleteAllResponse;
 import com.jooms.tickettracker.GetTicketRequest;
@@ -58,6 +60,21 @@ public class TicketTrackerClient {
     CreateTicketResponse resp;
     try {
       resp = blockingStub.createTicket(req);
+    } catch (StatusRuntimeException e) {
+      warning("RPC failed: {0}", e.getStatus());
+      return;
+    }
+
+    info("*** Saw response: {0}", resp);
+  }
+
+  public void createTickets(List<TicketTracker.Ticket> ts) {
+    info("*** Creating tickets: {0}", ts);
+
+    CreateTicketsRequest req = CreateTicketsRequest.newBuilder().addAllTickets(ts).build();
+    CreateTicketsResponse resp;
+    try {
+      resp = blockingStub.createTickets(req);
     } catch (StatusRuntimeException e) {
       warning("RPC failed: {0}", e.getStatus());
       return;

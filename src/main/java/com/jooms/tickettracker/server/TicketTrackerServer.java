@@ -2,6 +2,7 @@ package com.jooms.tickettracker.server;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
 
 import com.jooms.tickettracker.CreateTicketResponse;
+import com.jooms.tickettracker.CreateTicketsResponse;
 import com.jooms.tickettracker.DeleteAllRequest;
 import com.jooms.tickettracker.DeleteAllResponse;
 import com.jooms.tickettracker.GetTicketRequest;
@@ -94,6 +96,15 @@ public class TicketTrackerServer {
       Ticket pbt = request.getTicket();
       ticketLayer.save(this.rsp, pbt);
       responseObserver.onNext(CreateTicketResponse.getDefaultInstance());
+      responseObserver.onCompleted();
+    }
+
+    @Override
+    public void createTickets(com.jooms.tickettracker.CreateTicketsRequest request,
+        StreamObserver<com.jooms.tickettracker.CreateTicketsResponse> responseObserver) {
+      List<Ticket> pbts = request.getTicketsList();
+      ticketLayer.saveMultiple(this.rsp, pbts);
+      responseObserver.onNext(CreateTicketsResponse.getDefaultInstance());
       responseObserver.onCompleted();
     }
 

@@ -1,6 +1,7 @@
 package com.jooms.tickettracker.data;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 import com.apple.foundationdb.record.RecordCursor;
@@ -112,6 +113,13 @@ public class TicketLayer {
         db.run(context -> save(recordStoreProvider.apply(context), t));
     }
 
+    public void saveMultiple(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, List<Ticket> ts) {
+        db.run(context -> {
+            saveMultiple(recordStoreProvider.apply(context), ts);
+            return true;
+        });
+    }
+
     public void deleteAll(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider) {
         db.run(context -> {
             deleteAll(recordStoreProvider.apply(context));
@@ -156,6 +164,13 @@ public class TicketLayer {
         return recordStore.saveRecord(t);
     }
 
+    public static void saveMultiple(FDBRecordStore recordStore, List<Ticket> ts) {
+        for (Ticket t : ts) {
+            recordStore.saveRecord(t);
+        }
+    }
+
+    
     public static void deleteAll(FDBRecordStore recordStore) {
         recordStore.deleteAllRecords();
     }
