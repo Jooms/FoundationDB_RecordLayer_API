@@ -1,22 +1,22 @@
-package com.jooms.tickettracker.cli.withproxy;
+package com.jooms.tickettracker.cli.noproxy;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
 
-import io.grpc.Grpc;
-import io.grpc.InsecureChannelCredentials;
-import io.grpc.ManagedChannel;
-
+import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase;
+import com.apple.foundationdb.record.provider.foundationdb.FDBDatabaseFactory;
+import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext;
+import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
 import com.jooms.tickettracker.TicketTracker.Ticket;
-import com.jooms.tickettracker.client.TicketTrackerClient;
 import com.jooms.tickettracker.data.TicketLayer;
 
-public class ProxyCli {
+public class Cli {
     private static Random rand;
 
-    static String USAGE = "cli [host] [port] [command] <args ...>\n" +
+    static String USAGE = "cli [command] <args ...>\n" +
             "commands:\n" +
             "\tcreate-single: <amount>\n" + 
             "\tcreate-multiple: <batchSize> <amountOfBatches>\n" + 
@@ -50,15 +50,17 @@ public class ProxyCli {
         public long executionTime = 0;
     }
 
-    private static Durations createSingle(String[] args, TicketTrackerClient cl) {
+    private static Durations createSingle(String[] args, TicketLayer tl) {
         Durations d = new Durations();
+        
+        Function<FDBRecordContext, FDBRecordStore> rsp = tl.getRecordStoreProvider();
 
-        if (args.length < 4) {
+        if (args.length < 2) {
             Usage(args);
             System.out.println("Missing an amount!");
             return d;
         }
-        int amount = Integer.parseInt(args[3]);
+        int amount = Integer.parseInt(args[1]);
         ArrayList<Ticket> ticketsToCreate = new ArrayList<Ticket>();
         long startTime = System.nanoTime();
         for (int i = 0; i < amount; i++) {
@@ -68,23 +70,25 @@ public class ProxyCli {
         System.out.println(String.format("Generated %d tickets!", amount));
         startTime = System.nanoTime();
         for (Ticket t : ticketsToCreate) {
-            cl.createTicket(t);
+            tl.save(rsp, t);
         }
         d.executionTime = (System.nanoTime() - startTime);
         System.out.println(String.format("Created %d tickets!", amount));
         return d;
     }
 
-    private static Durations createMultiple(String[] args, TicketTrackerClient cl) {
+    private static Durations createMultiple(String[] args, TicketLayer tl) {
         Durations d = new Durations();
+        
+        Function<FDBRecordContext, FDBRecordStore> rsp = tl.getRecordStoreProvider();
 
-        if (args.length < 5) {
+        if (args.length < 3) {
             Usage(args);
             System.out.println("Missing a batchSize and an amount of batches!");
             return d;
         }
-        int batchSize = Integer.parseInt(args[3]);
-        int amount = Integer.parseInt(args[4]);
+        int batchSize = Integer.parseInt(args[1]);
+        int amount = Integer.parseInt(args[2]);
         ArrayList<ArrayList<Ticket>> ticketsToCreate = new ArrayList<ArrayList<Ticket>>();
         long startTime = System.nanoTime();
         for (int i = 0; i < batchSize; i++) {
@@ -98,25 +102,27 @@ public class ProxyCli {
         System.out.println(String.format("Generated %d tickets %d times!", batchSize, amount));
         startTime = System.nanoTime();
         for (ArrayList<Ticket> ts : ticketsToCreate) {
-            cl.createTickets(ts);
+            tl.saveMultiple(rsp, ts);
         }
         d.executionTime = (System.nanoTime() - startTime);
         System.out.println(String.format("Created %d tickets %d times!", batchSize, amount));
         return d;
     }
 
-    private static Durations getSingle(String[] args, TicketTrackerClient cl) {
+    private static Durations getSingle(String[] args, TicketLayer tl) {
         Durations d = new Durations();
+        
+        Function<FDBRecordContext, FDBRecordStore> rsp = tl.getRecordStoreProvider();
 
-        if (args.length < 4) {
+        if (args.length < 2) {
             Usage(args);
             System.out.println("Missing an amount!");
             return d;
         }
-        int amount = Integer.parseInt(args[3]);
+        int amount = Integer.parseInt(args[1]);
         long startTime = System.nanoTime();
         // Get all
-        List<Ticket> lt = cl.getTickets();
+        List<Ticket> lt = tl.getMultiple(rsp);
         if (lt == null) {
             System.out.println("FAILED TO GET TICKETS!");
             return d;
@@ -132,83 +138,84 @@ public class ProxyCli {
         // Get "amount" tickets
         for (int i = 0; i < amount; i++) {
             // i % allTicks size so if we want more than we have we loop around.
-            cl.getTicket(allTicks.get(i % allTicks.size()).getId());
+            tl.get(rsp, allTicks.get(i % allTicks.size()).getId());
         }
         d.executionTime = (System.nanoTime() - startTime);
         System.out.println(String.format("Read %d tickets!", amount));
         return d;
     }
 
-    private static Durations getAll(String[] args, TicketTrackerClient cl) {
+    private static Durations getAll(String[] args, TicketLayer tl) {
         Durations d = new Durations();
 
-        if (args.length < 4) {
+        Function<FDBRecordContext, FDBRecordStore> rsp = tl.getRecordStoreProvider();
+
+        if (args.length < 2) {
             Usage(args);
             System.out.println("Missing a number of times!");
             return d;
         }
-        int numTimes = Integer.parseInt(args[3]);
+        int numTimes = Integer.parseInt(args[1]);
         long startTime = System.nanoTime();
         for (int i = 0; i < numTimes; i++) {
-            cl.getTickets();
+            tl.getMultiple(rsp);
         }
         d.executionTime = (System.nanoTime() - startTime);
         System.out.println(String.format("Got all ticket %d time(s)!", numTimes));
         return d;
     }
 
-    private static Durations deleteAll(TicketTrackerClient cl) {
+    private static Durations deleteAll(TicketLayer tl) {
         Durations d = new Durations();
 
+        Function<FDBRecordContext, FDBRecordStore> rsp = tl.getRecordStoreProvider();
+
         long startTime = System.nanoTime();
-        cl.deleteAll();
+        tl.deleteAll(rsp);
         d.executionTime = (System.nanoTime() - startTime);
         System.out.println("Deleted all tickets!");
         return d;
     }
 
     public static void main(String[] args) {
-        if (args.length < 3) {
+        if (args.length < 1) {
             Usage(args);
             return;
         }
 
-        int port = Integer.parseInt(args[1]);
-        String target = args[0] + ":" + port;
         rand = new Random();
 
-        System.out.println(String.format("Will be using the following target: %s", target));
+        System.out.println("Will be using the record layer library");
 
-        // Create Client
-        ManagedChannel channel = Grpc.newChannelBuilder(target, InsecureChannelCredentials.create())
-                .build();
-        TicketTrackerClient cl = new TicketTrackerClient(channel, false);
+        // Create DB
+        FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
+
+        // Set up DAL
+        TicketLayer tl = new TicketLayer(db, "TicketTracker");
 
         Durations d = new Durations();
-        switch (args[2]) {
+        switch (args[0]) {
             case "create-single":
-                d = createSingle(args, cl);
+                d = createSingle(args, tl);
                 break;
             case "create-multiple":
-                d = createMultiple(args, cl);
+                d = createMultiple(args, tl);
                 break;
             case "get-single":
-                d = getSingle(args, cl);
+                d = getSingle(args, tl);
                 break;
             case "get-multiple":
-                d = getAll(args, cl);
+                d = getAll(args, tl);
                 break;
             case "delete-all":
-                d = deleteAll(cl);
+                d = deleteAll(tl);
                 break;
             default:
                 Usage(args);
         }
 
-        System.out.println(String.format("Command '%s' runtime:", args[2]));
+        System.out.println(String.format("Command '%s' runtime:", args[0]));
         System.out.println(String.format("\tGeneration Time (ms): %d", d.generationTime / 1000000));
         System.out.println(String.format("\tExecution Time (ms): %d", d.executionTime / 1000000));
-
-        channel.shutdown();
     }
 }
