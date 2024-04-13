@@ -1,12 +1,10 @@
 package com.jooms.tickettracker.data;
 
 import java.util.ArrayList;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 import com.apple.foundationdb.record.RecordCursor;
 import com.apple.foundationdb.record.RecordCursorIterator;
-import com.apple.foundationdb.record.RecordCursorResult;
 import com.apple.foundationdb.record.RecordMetaData;
 import com.apple.foundationdb.record.RecordMetaDataBuilder;
 import com.apple.foundationdb.record.metadata.Key;
@@ -19,7 +17,6 @@ import com.apple.foundationdb.record.provider.foundationdb.keyspace.KeySpace;
 import com.apple.foundationdb.record.provider.foundationdb.keyspace.KeySpaceDirectory;
 import com.apple.foundationdb.record.provider.foundationdb.keyspace.KeySpacePath;
 import com.apple.foundationdb.record.query.RecordQuery;
-import com.apple.foundationdb.record.query.expressions.Query;
 import com.apple.foundationdb.tuple.Tuple;
 import com.google.protobuf.Message;
 
@@ -40,12 +37,12 @@ public class TicketLayer {
         BROKEN_FUNCTIONALITY,
     }
 
-    public TicketLayer(FDBDatabase db) {
+    public TicketLayer(FDBDatabase db, String namespace) {
         this.db = db;
 
         KeySpace keySpace = new KeySpace(
-                new KeySpaceDirectory("TicketTracker", KeySpaceDirectory.KeyType.STRING, "TicketTracker"));
-        path = keySpace.path("TicketTracker");
+                new KeySpaceDirectory(namespace, KeySpaceDirectory.KeyType.STRING, namespace));
+        path = keySpace.path(namespace);
 
         RecordMetaDataBuilder metaDataBuilder = RecordMetaData.newBuilder()
                 .setRecords(TicketTracker.getDescriptor());
@@ -101,20 +98,25 @@ public class TicketLayer {
     // Non-static gets and saves
     public Ticket get(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, int id) {
         return db.run(context -> {
-                return get(recordStoreProvider.apply(context), id);
-            }
-        );
+            return get(recordStoreProvider.apply(context), id);
+        });
     }
 
     public ArrayList<Ticket> getMultiple(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider) {
         return db.run(context -> {
             return getMultiple(recordStoreProvider.apply(context));
-            }
-        );
+        });
     }
 
     public void save(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider, Ticket t) {
         db.run(context -> save(recordStoreProvider.apply(context), t));
+    }
+
+    public void deleteAll(Function<FDBRecordContext, FDBRecordStore> recordStoreProvider) {
+        db.run(context -> {
+            deleteAll(recordStoreProvider.apply(context));
+            return true;
+        });
     }
 
     // Static Gets and Saves
@@ -130,25 +132,31 @@ public class TicketLayer {
 
     private static ArrayList<Ticket> getMultiple(FDBRecordStore recordStore) {
         RecordQuery query = RecordQuery.newBuilder()
-        .setRecordType(TicketLayer.recordType)
-        .setSort(Key.Expressions.field(TicketLayer.primaryKey))
-        .build();
+                .setRecordType(TicketLayer.recordType)
+                .setSort(Key.Expressions.field(TicketLayer.primaryKey))
+                .build();
 
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
-        
+
         try (RecordCursor<FDBQueriedRecord<Message>> cursor = recordStore.executeQuery(query)) {
             RecordCursorIterator<FDBQueriedRecord<Message>> iter = cursor.asIterator();
             while (iter.hasNext()) {
                 FDBQueriedRecord<Message> rec = iter.next();
-                Ticket t = Ticket.newBuilder().mergeFrom(rec.getRecord()).build();
-                tickets.add(t);
+                if (rec != null) {
+                    Ticket t = Ticket.newBuilder().mergeFrom(rec.getRecord()).build();
+                    tickets.add(t);
+                }
             }
-         }
+        }
 
         return tickets;
     }
 
     public static FDBStoredRecord<Message> save(FDBRecordStore recordStore, Ticket t) {
         return recordStore.saveRecord(t);
+    }
+
+    public static void deleteAll(FDBRecordStore recordStore) {
+        recordStore.deleteAllRecords();
     }
 }

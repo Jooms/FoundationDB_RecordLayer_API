@@ -1,7 +1,6 @@
 package com.jooms.tickettracker.client;
 
 import java.util.logging.Logger;
-import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -14,29 +13,27 @@ import io.grpc.StatusRuntimeException;
 import com.jooms.tickettracker.GoodbyeMessage;
 import com.jooms.tickettracker.HelloMessage;
 import com.jooms.tickettracker.TicketTracker;
-import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase;
-import com.apple.foundationdb.record.provider.foundationdb.FDBDatabaseFactory;
 import com.jooms.tickettracker.CreateTicketRequest;
 import com.jooms.tickettracker.CreateTicketResponse;
+import com.jooms.tickettracker.DeleteAllRequest;
+import com.jooms.tickettracker.DeleteAllResponse;
 import com.jooms.tickettracker.GetTicketRequest;
 import com.jooms.tickettracker.GetTicketResponse;
 import com.jooms.tickettracker.GetTicketsRequest;
 import com.jooms.tickettracker.GetTicketsResponse;
 import com.jooms.tickettracker.TicketTrackerGrpc;
 import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerBlockingStub;
-import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerStub;
 import com.jooms.tickettracker.data.TicketLayer;
-import com.jooms.tickettracker.server.TicketTrackerServer;
 
 public class TicketTrackerClient {
   private static final Logger logger = Logger.getLogger(TicketTrackerClient.class.getName());
 
   private final TicketTrackerBlockingStub blockingStub;
-  private final TicketTrackerStub asyncStub;
+  // private final TicketTrackerStub asyncStub;
 
   public TicketTrackerClient(Channel channel) {
     blockingStub = TicketTrackerGrpc.newBlockingStub(channel);
-    asyncStub = TicketTrackerGrpc.newStub(channel);
+    // asyncStub = TicketTrackerGrpc.newStub(channel);
   }
 
   public void sayHello(String msg) {
@@ -86,7 +83,7 @@ public class TicketTrackerClient {
   }
 
   public List<TicketTracker.Ticket> getTickets() {
-    info("*** Getting ticket s:");
+    info("*** Getting tickets:");
 
     GetTicketsRequest req = GetTicketsRequest.newBuilder().build();
     GetTicketsResponse resp;
@@ -99,6 +96,22 @@ public class TicketTrackerClient {
 
     info("*** Saw response: {0}", resp);
     return resp.getTicketsList();
+  }
+
+  public void deleteAll() {
+    info("*** Deleting tickets:");
+
+    DeleteAllRequest req = DeleteAllRequest.newBuilder().build();
+    DeleteAllResponse resp;
+    try {
+      resp = blockingStub.deleteAll(req);
+      info("*** Deleted tickets:");
+    } catch (StatusRuntimeException e) {
+      warning("RPC failed: {0}", e.getStatus());
+      return;
+    }
+
+    info("*** Saw response: {0}", resp);
   }
 
   private void info(String msg, Object... params) {

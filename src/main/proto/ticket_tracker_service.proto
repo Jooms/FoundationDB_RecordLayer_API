@@ -11,6 +11,7 @@ service TicketTracker {
     rpc CreateTicket(CreateTicketRequest) returns (CreateTicketResponse) {}
     rpc GetTicket(GetTicketRequest) returns (GetTicketResponse) {}
     rpc GetTickets(GetTicketsRequest) returns (GetTicketsResponse) {}
+    rpc DeleteAll(DeleteAllRequest) returns (DeleteAllResponse) {}
 }
 
 message HelloMessage {
@@ -38,9 +39,12 @@ message GetTicketResponse {
     Ticket ticket = 2;
 }
 
-message GetTicketsRequest {
-}
+message GetTicketsRequest {}
 
 message GetTicketsResponse {
     repeated Ticket tickets = 1;
 }
+
+message DeleteAllRequest {}
+
+message DeleteAllResponse {}

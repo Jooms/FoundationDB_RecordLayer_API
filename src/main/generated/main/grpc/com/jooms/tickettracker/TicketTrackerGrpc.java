@@ -139,6 +139,37 @@ public final class TicketTrackerGrpc {
     return getGetTicketsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.jooms.tickettracker.DeleteAllRequest,
+      com.jooms.tickettracker.DeleteAllResponse> getDeleteAllMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteAll",
+      requestType = com.jooms.tickettracker.DeleteAllRequest.class,
+      responseType = com.jooms.tickettracker.DeleteAllResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.jooms.tickettracker.DeleteAllRequest,
+      com.jooms.tickettracker.DeleteAllResponse> getDeleteAllMethod() {
+    io.grpc.MethodDescriptor<com.jooms.tickettracker.DeleteAllRequest, com.jooms.tickettracker.DeleteAllResponse> getDeleteAllMethod;
+    if ((getDeleteAllMethod = TicketTrackerGrpc.getDeleteAllMethod) == null) {
+      synchronized (TicketTrackerGrpc.class) {
+        if ((getDeleteAllMethod = TicketTrackerGrpc.getDeleteAllMethod) == null) {
+          TicketTrackerGrpc.getDeleteAllMethod = getDeleteAllMethod =
+              io.grpc.MethodDescriptor.<com.jooms.tickettracker.DeleteAllRequest, com.jooms.tickettracker.DeleteAllResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteAll"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.DeleteAllRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.jooms.tickettracker.DeleteAllResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new TicketTrackerMethodDescriptorSupplier("DeleteAll"))
+              .build();
+        }
+      }
+    }
+    return getDeleteAllMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -214,6 +245,13 @@ public final class TicketTrackerGrpc {
         io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTicketsMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void deleteAll(com.jooms.tickettracker.DeleteAllRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.DeleteAllResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteAllMethod(), responseObserver);
+    }
   }
 
   /**
@@ -274,6 +312,14 @@ public final class TicketTrackerGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetTicketsMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void deleteAll(com.jooms.tickettracker.DeleteAllRequest request,
+        io.grpc.stub.StreamObserver<com.jooms.tickettracker.DeleteAllResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteAllMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -318,6 +364,13 @@ public final class TicketTrackerGrpc {
     public com.jooms.tickettracker.GetTicketsResponse getTickets(com.jooms.tickettracker.GetTicketsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetTicketsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.jooms.tickettracker.DeleteAllResponse deleteAll(com.jooms.tickettracker.DeleteAllRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteAllMethod(), getCallOptions(), request);
     }
   }
 
@@ -368,12 +421,21 @@ public final class TicketTrackerGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetTicketsMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.jooms.tickettracker.DeleteAllResponse> deleteAll(
+        com.jooms.tickettracker.DeleteAllRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteAllMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SAY_HELLO = 0;
   private static final int METHODID_CREATE_TICKET = 1;
   private static final int METHODID_GET_TICKET = 2;
   private static final int METHODID_GET_TICKETS = 3;
+  private static final int METHODID_DELETE_ALL = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -407,6 +469,10 @@ public final class TicketTrackerGrpc {
         case METHODID_GET_TICKETS:
           serviceImpl.getTickets((com.jooms.tickettracker.GetTicketsRequest) request,
               (io.grpc.stub.StreamObserver<com.jooms.tickettracker.GetTicketsResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_ALL:
+          serviceImpl.deleteAll((com.jooms.tickettracker.DeleteAllRequest) request,
+              (io.grpc.stub.StreamObserver<com.jooms.tickettracker.DeleteAllResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -454,6 +520,13 @@ public final class TicketTrackerGrpc {
               com.jooms.tickettracker.GetTicketsRequest,
               com.jooms.tickettracker.GetTicketsResponse>(
                 service, METHODID_GET_TICKETS)))
+        .addMethod(
+          getDeleteAllMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.jooms.tickettracker.DeleteAllRequest,
+              com.jooms.tickettracker.DeleteAllResponse>(
+                service, METHODID_DELETE_ALL)))
         .build();
   }
 
@@ -506,6 +579,7 @@ public final class TicketTrackerGrpc {
               .addMethod(getCreateTicketMethod())
               .addMethod(getGetTicketMethod())
               .addMethod(getGetTicketsMethod())
+              .addMethod(getDeleteAllMethod())
               .build();
         }
       }

@@ -26,7 +26,7 @@ public class Demo {
         FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
 
         // Set up DAL
-        TicketLayer tl = new TicketLayer(db);
+        TicketLayer tl = new TicketLayer(db, "TicketTracker");
 
         // Create Server with DAL
         TicketTrackerServer serv;
@@ -63,6 +63,9 @@ public class Demo {
         // Get Tickets
         List<Ticket> ts = cl.getTickets();
         System.out.println("Got tickets: " + ts);
+
+        // Delete all
+        // cl.deleteAll();
 
         channel.shutdown();
         try {

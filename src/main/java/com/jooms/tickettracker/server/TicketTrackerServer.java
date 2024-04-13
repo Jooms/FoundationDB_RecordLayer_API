@@ -18,6 +18,8 @@ import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext;
 import com.apple.foundationdb.record.provider.foundationdb.FDBRecordStore;
 
 import com.jooms.tickettracker.CreateTicketResponse;
+import com.jooms.tickettracker.DeleteAllRequest;
+import com.jooms.tickettracker.DeleteAllResponse;
 import com.jooms.tickettracker.GetTicketRequest;
 import com.jooms.tickettracker.GetTicketResponse;
 import com.jooms.tickettracker.GetTicketsRequest;
@@ -128,6 +130,14 @@ public class TicketTrackerServer {
       responseObserver.onNext(gtr.build());
       responseObserver.onCompleted();
     }
+    
+    @Override
+    public void deleteAll(DeleteAllRequest request, StreamObserver<DeleteAllResponse> responseObserver) {
+      ticketLayer.deleteAll(this.rsp);
+      responseObserver.onNext(DeleteAllResponse.getDefaultInstance());
+      responseObserver.onCompleted();
+
+    }
   }
 
   private static void info(String msg, Object... params) {
@@ -144,13 +154,12 @@ public class TicketTrackerServer {
         System.out.println("STARTING!!!");
 
         int port = 8000;
-        String target = "localhost:" + port;
 
         // Create DB
         FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
 
         // Set up DAL
-        TicketLayer tl = new TicketLayer(db);
+        TicketLayer tl = new TicketLayer(db, "TicketTracker");
 
         // Create Server with DAL
         TicketTrackerServer serv;
@@ -173,7 +182,6 @@ public class TicketTrackerServer {
         try {
             serv.blockUntilShutdown();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

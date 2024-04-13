@@ -54,6 +54,16 @@ public final class TicketTrackerService {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetTicketsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DeleteAllRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DeleteAllRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DeleteAllResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_DeleteAllResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -72,14 +82,17 @@ public final class TicketTrackerService {
       "ram\";\n\021GetTicketResponse\022\r\n\005found\030\001 \001(\010\022" +
       "\027\n\006ticket\030\002 \001(\0132\007.Ticket\"\023\n\021GetTicketsRe" +
       "quest\".\n\022GetTicketsResponse\022\030\n\007tickets\030\001" +
-      " \003(\0132\007.Ticket2\353\001\n\rTicketTracker\022,\n\010SayHe" +
-      "llo\022\r.HelloMessage\032\017.GoodbyeMessage\"\000\022=\n" +
-      "\014CreateTicket\022\024.CreateTicketRequest\032\025.Cr" +
-      "eateTicketResponse\"\000\0224\n\tGetTicket\022\021.GetT" +
-      "icketRequest\032\022.GetTicketResponse\"\000\0227\n\nGe" +
-      "tTickets\022\022.GetTicketsRequest\032\023.GetTicket" +
-      "sResponse\"\000B1\n\027com.jooms.tickettrackerB\024" +
-      "TicketTrackerServiceP\001b\006proto3"
+      " \003(\0132\007.Ticket\"\022\n\020DeleteAllRequest\"\023\n\021Del" +
+      "eteAllResponse2\241\002\n\rTicketTracker\022,\n\010SayH" +
+      "ello\022\r.HelloMessage\032\017.GoodbyeMessage\"\000\022=" +
+      "\n\014CreateTicket\022\024.CreateTicketRequest\032\025.C" +
+      "reateTicketResponse\"\000\0224\n\tGetTicket\022\021.Get" +
+      "TicketRequest\032\022.GetTicketResponse\"\000\0227\n\nG" +
+      "etTickets\022\022.GetTicketsRequest\032\023.GetTicke" +
+      "tsResponse\"\000\0224\n\tDeleteAll\022\021.DeleteAllReq" +
+      "uest\032\022.DeleteAllResponse\"\000B1\n\027com.jooms." +
+      "tickettrackerB\024TicketTrackerServiceP\001b\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -134,6 +147,18 @@ public final class TicketTrackerService {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetTicketsResponse_descriptor,
         new java.lang.String[] { "Tickets", });
+    internal_static_DeleteAllRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_DeleteAllRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DeleteAllRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_DeleteAllResponse_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_DeleteAllResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_DeleteAllResponse_descriptor,
+        new java.lang.String[] { });
     com.jooms.tickettracker.TicketTracker.getDescriptor();
   }
 
