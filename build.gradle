@@ -64,8 +64,8 @@ sourceSets {
     }
 }
 
-mainClassName = 'com.jooms.tickettracker.Demo'
-// mainClassName = 'com.jooms.tickettracker.cli.Cli'
+// mainClassName = 'com.jooms.tickettracker.Demo'
+mainClassName = 'com.jooms.tickettracker.cli.Cli'
 // mainClassName = 'com.jooms.tickettracker.server.TicketTrackerServer'
 // mainClassName = 'com.jooms.tickettracker.client.TicketTrackerClient'
 
