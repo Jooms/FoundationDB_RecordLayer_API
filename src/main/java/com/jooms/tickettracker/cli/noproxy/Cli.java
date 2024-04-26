@@ -161,7 +161,7 @@ public class Cli {
             tl.getMultiple(rsp);
         }
         d.executionTime = (System.nanoTime() - startTime);
-        System.out.println(String.format("Got all ticket %d time(s)!", numTimes));
+        System.out.println(String.format("Got all tickets %d time(s)!", numTimes));
         return d;
     }
 
@@ -191,7 +191,7 @@ public class Cli {
         FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
 
         // Set up DAL
-        TicketLayer tl = new TicketLayer(db, "TicketTracker");
+        TicketLayer tl = new TicketLayer(db, "TicketTracker", false);
 
         Durations d = new Durations();
         switch (args[0]) {

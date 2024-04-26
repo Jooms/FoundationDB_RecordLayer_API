@@ -153,7 +153,7 @@ public class ProxyCli {
             cl.getTickets();
         }
         d.executionTime = (System.nanoTime() - startTime);
-        System.out.println(String.format("Got all ticket %d time(s)!", numTimes));
+        System.out.println(String.format("Got all tickets %d time(s)!", numTimes));
         return d;
     }
 

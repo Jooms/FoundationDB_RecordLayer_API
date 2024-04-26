@@ -28,10 +28,10 @@ import com.jooms.tickettracker.TicketTrackerGrpc.TicketTrackerBlockingStub;
 import com.jooms.tickettracker.data.TicketLayer;
 
 public class TicketTrackerClient {
-  private static final Logger logger = Logger.getLogger(TicketTrackerClient.class.getName());
+  static final private Logger logger = Logger.getLogger(TicketTrackerClient.class.getName());
 
-  private final boolean loggingEnabled;
-  private final TicketTrackerBlockingStub blockingStub;
+  final private boolean loggingEnabled;
+  final private TicketTrackerBlockingStub blockingStub;
 
   public TicketTrackerClient(Channel channel) {
     this(channel, true);
@@ -116,7 +116,7 @@ public class TicketTrackerClient {
       return null;
     }
 
-    info("*** Saw response: {0}", resp);
+    info("*** Saw response size: {0}", resp.getTicketsCount());
     return resp.getTicketsList();
   }
 

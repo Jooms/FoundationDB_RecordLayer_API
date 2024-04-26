@@ -26,7 +26,7 @@ public class Demo {
         FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
 
         // Set up DAL
-        TicketLayer tl = new TicketLayer(db, "TicketTracker");
+        TicketLayer tl = new TicketLayer(db, "TicketTracker", true);
 
         // Create Server with DAL
         TicketTrackerServer serv;

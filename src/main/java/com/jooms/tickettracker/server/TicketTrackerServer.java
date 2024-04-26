@@ -32,13 +32,19 @@ import com.jooms.tickettracker.TicketTracker.Ticket;
 import com.jooms.tickettracker.data.TicketLayer;
 
 public class TicketTrackerServer {
-  private static final Logger logger = Logger.getLogger(TicketTrackerServer.class.getName());
+  static final private Logger logger = Logger.getLogger(TicketTrackerServer.class.getName());
 
-  private final int port;
-  private final Server server;
+  final private boolean loggingEnabled;
+  final private int port;
+  final private Server server;
 
   public TicketTrackerServer(int port, TicketLayer ticketLayer) throws IOException {
+    this(port, ticketLayer, true);
+  }
+
+  public TicketTrackerServer(int port, TicketLayer ticketLayer, boolean loggingEnabled) throws IOException {
     this.port = port;
+    this.loggingEnabled = loggingEnabled;
 
     server = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
         .addService(new TicketTrackerService(ticketLayer)).build();
@@ -46,7 +52,7 @@ public class TicketTrackerServer {
 
   public void start() throws IOException {
     server.start();
-    info("Server started, listening on " + port);
+    info(loggingEnabled, "Server started, listening on " + port);
     Runtime.getRuntime().addShutdownHook(new Thread() {
       @Override
       public void run() {
@@ -85,7 +91,7 @@ public class TicketTrackerServer {
     @Override
     public void sayHello(com.jooms.tickettracker.HelloMessage request,
         io.grpc.stub.StreamObserver<com.jooms.tickettracker.GoodbyeMessage> responseObserver) {
-      info("Saw:" + request);
+      info(false, "Saw:" + request);
       responseObserver.onNext(GoodbyeMessage.newBuilder().setText("Saw ya").build());
       responseObserver.onCompleted();
     }
@@ -93,6 +99,8 @@ public class TicketTrackerServer {
     @Override
     public void createTicket(com.jooms.tickettracker.CreateTicketRequest request,
         StreamObserver<com.jooms.tickettracker.CreateTicketResponse> responseObserver) {
+      info(false, "createTicket called!");
+
       Ticket pbt = request.getTicket();
       ticketLayer.save(this.rsp, pbt);
       responseObserver.onNext(CreateTicketResponse.getDefaultInstance());
@@ -102,6 +110,8 @@ public class TicketTrackerServer {
     @Override
     public void createTickets(com.jooms.tickettracker.CreateTicketsRequest request,
         StreamObserver<com.jooms.tickettracker.CreateTicketsResponse> responseObserver) {
+      info(false, "createTickets called!");
+
       List<Ticket> pbts = request.getTicketsList();
       ticketLayer.saveMultiple(this.rsp, pbts);
       responseObserver.onNext(CreateTicketsResponse.getDefaultInstance());
@@ -110,6 +120,7 @@ public class TicketTrackerServer {
 
     @Override
     public void getTicket(GetTicketRequest request, StreamObserver<GetTicketResponse> responseObserver) {
+      info(false, "getTicket called!");
       Ticket t;
       switch (request.getSearchParamCase()) {
         case TICKET_ID:
@@ -130,6 +141,7 @@ public class TicketTrackerServer {
 
     @Override
     public void getTickets(GetTicketsRequest request, StreamObserver<GetTicketsResponse> responseObserver) {
+      info(false, "getTickets called!");
       ArrayList<Ticket> tickets;
 
       tickets = ticketLayer.getMultiple(this.rsp);
@@ -144,6 +156,7 @@ public class TicketTrackerServer {
     
     @Override
     public void deleteAll(DeleteAllRequest request, StreamObserver<DeleteAllResponse> responseObserver) {
+      info(false, "deleteAll called!");
       ticketLayer.deleteAll(this.rsp);
       responseObserver.onNext(DeleteAllResponse.getDefaultInstance());
       responseObserver.onCompleted();
@@ -151,9 +164,11 @@ public class TicketTrackerServer {
     }
   }
 
-  private static void info(String msg, Object... params) {
-    msg = "Server: " + msg;
-    logger.log(Level.INFO, msg, params);
+  private static void info(boolean loggingEnabled, String msg, Object... params) {
+    if (loggingEnabled) {
+      msg = "Server: " + msg;
+      logger.log(Level.INFO, msg, params);
+    }
   }
 
   private static void warning(String msg, Object... params) {
@@ -170,12 +185,12 @@ public class TicketTrackerServer {
         FDBDatabase db = FDBDatabaseFactory.instance().getDatabase();
 
         // Set up DAL
-        TicketLayer tl = new TicketLayer(db, "TicketTracker");
+        TicketLayer tl = new TicketLayer(db, "TicketTracker", false);
 
         // Create Server with DAL
         TicketTrackerServer serv;
         try {
-            serv = new TicketTrackerServer(port, tl);
+            serv = new TicketTrackerServer(port, tl, true);
         } catch (IOException e) {
             e.printStackTrace();
             return;
