@@ -1,0 +1,1691 @@
+"> ./test.sh ""java -jar cli.jar get-single 1000"" 20"
+repetitions: 20
+Will be using the record layer library
+"Apr 29, 2024 10:36:00 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 438
+Execution Time (ms): 1307
+Will be using the record layer library
+"Apr 29, 2024 10:36:02 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 443
+Execution Time (ms): 1333
+Will be using the record layer library
+"Apr 29, 2024 10:36:04 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 437
+Execution Time (ms): 1321
+Will be using the record layer library
+"Apr 29, 2024 10:36:06 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 425
+Execution Time (ms): 1327
+Will be using the record layer library
+"Apr 29, 2024 10:36:08 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 449
+Execution Time (ms): 1325
+Will be using the record layer library
+"Apr 29, 2024 10:36:11 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 436
+Execution Time (ms): 1333
+Will be using the record layer library
+"Apr 29, 2024 10:36:13 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 433
+Execution Time (ms): 1340
+Will be using the record layer library
+"Apr 29, 2024 10:36:15 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 446
+Execution Time (ms): 1346
+Will be using the record layer library
+"Apr 29, 2024 10:36:17 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 450
+Execution Time (ms): 1340
+Will be using the record layer library
+"Apr 29, 2024 10:36:19 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 440
+Execution Time (ms): 1329
+Will be using the record layer library
+"Apr 29, 2024 10:36:21 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 1333
+Will be using the record layer library
+"Apr 29, 2024 10:36:23 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 452
+Execution Time (ms): 1370
+Will be using the record layer library
+"Apr 29, 2024 10:36:25 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 438
+Execution Time (ms): 1355
+Will be using the record layer library
+"Apr 29, 2024 10:36:27 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 441
+Execution Time (ms): 1352
+Will be using the record layer library
+"Apr 29, 2024 10:36:29 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 442
+Execution Time (ms): 1395
+Will be using the record layer library
+"Apr 29, 2024 10:36:31 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 1339
+Will be using the record layer library
+"Apr 29, 2024 10:36:34 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 433
+Execution Time (ms): 1311
+Will be using the record layer library
+"Apr 29, 2024 10:36:36 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 449
+Execution Time (ms): 1315
+Will be using the record layer library
+"Apr 29, 2024 10:36:38 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 442
+Execution Time (ms): 1319
+Will be using the record layer library
+"Apr 29, 2024 10:36:40 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 443
+Execution Time (ms): 1318
+
+
+
+
+
+"./test.sh ""java -jar proxyCli.jar 127.0.0.1 8000 get-single 1000"" 20"
+repetitions: 20
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 743
+Execution Time (ms): 2172
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 421
+Execution Time (ms): 1893
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 370
+Execution Time (ms): 1874
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 345
+Execution Time (ms): 1812
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 349
+Execution Time (ms): 1759
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 359
+Execution Time (ms): 1809
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 366
+Execution Time (ms): 1818
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 367
+Execution Time (ms): 1768
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 371
+Execution Time (ms): 1763
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 339
+Execution Time (ms): 1698
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 371
+Execution Time (ms): 1745
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 357
+Execution Time (ms): 1754
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 349
+Execution Time (ms): 1757
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 353
+Execution Time (ms): 1639
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 354
+Execution Time (ms): 1695
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 364
+Execution Time (ms): 1700
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 369
+Execution Time (ms): 1790
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 327
+Execution Time (ms): 1760
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 370
+Execution Time (ms): 1727
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 1000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 352
+Execution Time (ms): 1714
+
+
+
+
+
+"./test.sh ""java -jar cli.jar get-single 5000"" 20"
+Will be using the record layer library
+"Apr 29, 2024 10:44:48 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 437
+Execution Time (ms): 6359
+Will be using the record layer library
+"Apr 29, 2024 10:44:55 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 455
+Execution Time (ms): 6241
+Will be using the record layer library
+"Apr 29, 2024 10:45:02 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 453
+Execution Time (ms): 6244
+Will be using the record layer library
+"Apr 29, 2024 10:45:09 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 435
+Execution Time (ms): 6273
+Will be using the record layer library
+"Apr 29, 2024 10:45:16 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 430
+Execution Time (ms): 6422
+Will be using the record layer library
+"Apr 29, 2024 10:45:23 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 457
+Execution Time (ms): 6471
+Will be using the record layer library
+"Apr 29, 2024 10:45:30 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 469
+Execution Time (ms): 6206
+Will be using the record layer library
+"Apr 29, 2024 10:45:37 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 433
+Execution Time (ms): 6296
+Will be using the record layer library
+"Apr 29, 2024 10:45:44 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 456
+Execution Time (ms): 6238
+Will be using the record layer library
+"Apr 29, 2024 10:45:51 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 450
+Execution Time (ms): 6321
+Will be using the record layer library
+"Apr 29, 2024 10:45:58 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 438
+Execution Time (ms): 6328
+Will be using the record layer library
+"Apr 29, 2024 10:46:05 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 437
+Execution Time (ms): 6448
+Will be using the record layer library
+"Apr 29, 2024 10:46:13 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 447
+Execution Time (ms): 6269
+Will be using the record layer library
+"Apr 29, 2024 10:46:20 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 447
+Execution Time (ms): 6280
+Will be using the record layer library
+"Apr 29, 2024 10:46:27 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 447
+Execution Time (ms): 6405
+Will be using the record layer library
+"Apr 29, 2024 10:46:34 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 446
+Execution Time (ms): 6244
+Will be using the record layer library
+"Apr 29, 2024 10:46:41 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 438
+Execution Time (ms): 6260
+Will be using the record layer library
+"Apr 29, 2024 10:46:48 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 439
+Execution Time (ms): 6451
+Will be using the record layer library
+"Apr 29, 2024 10:46:55 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 445
+Execution Time (ms): 6364
+Will be using the record layer library
+"Apr 29, 2024 10:47:02 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 451
+Execution Time (ms): 6270
+
+
+
+
+"./test.sh ""java -jar proxyCli.jar 127.0.0.1 8000 get-single 5000"" 20"
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 335
+Execution Time (ms): 7594
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 328
+Execution Time (ms): 7587
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 355
+Execution Time (ms): 7519
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 364
+Execution Time (ms): 7244
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 355
+Execution Time (ms): 7476
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 376
+Execution Time (ms): 7411
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 360
+Execution Time (ms): 7349
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 355
+Execution Time (ms): 7500
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 362
+Execution Time (ms): 7421
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 355
+Execution Time (ms): 7385
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 350
+Execution Time (ms): 7521
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 356
+Execution Time (ms): 7425
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 331
+Execution Time (ms): 7385
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 352
+Execution Time (ms): 7354
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 340
+Execution Time (ms): 7586
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 330
+Execution Time (ms): 7463
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 348
+Execution Time (ms): 7386
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 361
+Execution Time (ms): 7303
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 335
+Execution Time (ms): 7551
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 5000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 374
+Execution Time (ms): 7493
+
+
+
+
+
+"./test.sh ""java -jar cli.jar get-single 10000"" 20"
+Will be using the record layer library
+"Apr 29, 2024 10:51:59 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 434
+Execution Time (ms): 12525
+Will be using the record layer library
+"Apr 29, 2024 10:52:12 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 452
+Execution Time (ms): 12412
+Will be using the record layer library
+"Apr 29, 2024 10:52:25 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 446
+Execution Time (ms): 12468
+Will be using the record layer library
+"Apr 29, 2024 10:52:38 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 435
+Execution Time (ms): 12451
+Will be using the record layer library
+"Apr 29, 2024 10:52:51 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 443
+Execution Time (ms): 12517
+Will be using the record layer library
+"Apr 29, 2024 10:53:05 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 450
+Execution Time (ms): 12377
+Will be using the record layer library
+"Apr 29, 2024 10:53:18 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 12519
+Will be using the record layer library
+"Apr 29, 2024 10:53:31 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 469
+Execution Time (ms): 12537
+Will be using the record layer library
+"Apr 29, 2024 10:53:44 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 446
+Execution Time (ms): 12591
+Will be using the record layer library
+"Apr 29, 2024 10:53:58 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 436
+Execution Time (ms): 12860
+Will be using the record layer library
+"Apr 29, 2024 10:54:11 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 449
+Execution Time (ms): 12624
+Will be using the record layer library
+"Apr 29, 2024 10:54:25 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 449
+Execution Time (ms): 12536
+Will be using the record layer library
+"Apr 29, 2024 10:54:38 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 438
+Execution Time (ms): 12542
+Will be using the record layer library
+"Apr 29, 2024 10:54:51 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 445
+Execution Time (ms): 12450
+Will be using the record layer library
+"Apr 29, 2024 10:55:04 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 446
+Execution Time (ms): 12565
+Will be using the record layer library
+"Apr 29, 2024 10:55:18 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 12397
+Will be using the record layer library
+"Apr 29, 2024 10:55:31 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 443
+Execution Time (ms): 12526
+Will be using the record layer library
+"Apr 29, 2024 10:55:44 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 447
+Execution Time (ms): 12572
+Will be using the record layer library
+"Apr 29, 2024 10:55:58 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 12381
+Will be using the record layer library
+"Apr 29, 2024 10:56:11 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 439
+Execution Time (ms): 12651
+
+
+
+
+
+"./test.sh ""java -jar proxyCli.jar 127.0.0.1 8000 get-single 10000"" 20"
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 331
+Execution Time (ms): 14370
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 346
+Execution Time (ms): 14335
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 10:57:19 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 368
+Execution Time (ms): 14370
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 359
+Execution Time (ms): 14338
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 362
+Execution Time (ms): 14355
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 360
+Execution Time (ms): 14458
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 363
+Execution Time (ms): 14514
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 10:58:29 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 372
+Execution Time (ms): 14340
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 10:58:51 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 360
+Execution Time (ms): 14287
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 370
+Execution Time (ms): 14361
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 366
+Execution Time (ms): 14249
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 356
+Execution Time (ms): 14220
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 358
+Execution Time (ms): 14301
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 358
+Execution Time (ms): 14152
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 331
+Execution Time (ms): 14152
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 358
+Execution Time (ms): 14415
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 353
+Execution Time (ms): 14315
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 357
+Execution Time (ms): 14570
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 339
+Execution Time (ms): 14593
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 10000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 350
+Execution Time (ms): 14387
+
+
+
+"./test.sh ""java -jar cli.jar get-single 20000"" 20"
+Will be using the record layer library
+"Apr 29, 2024 11:02:31 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 441
+Execution Time (ms): 24963
+Will be using the record layer library
+"Apr 29, 2024 11:02:57 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 25028
+Will be using the record layer library
+"Apr 29, 2024 11:03:22 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 432
+Execution Time (ms): 24900
+Will be using the record layer library
+"Apr 29, 2024 11:03:48 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 436
+Execution Time (ms): 24763
+Will be using the record layer library
+"Apr 29, 2024 11:04:14 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 445
+Execution Time (ms): 25036
+Will be using the record layer library
+"Apr 29, 2024 11:04:39 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 443
+Execution Time (ms): 25079
+Will be using the record layer library
+"Apr 29, 2024 11:05:05 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 455
+Execution Time (ms): 24896
+Will be using the record layer library
+"Apr 29, 2024 11:05:31 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 443
+Execution Time (ms): 24631
+Will be using the record layer library
+"Apr 29, 2024 11:05:56 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 450
+Execution Time (ms): 24830
+Will be using the record layer library
+"Apr 29, 2024 11:06:22 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 442
+Execution Time (ms): 25032
+Will be using the record layer library
+"Apr 29, 2024 11:06:48 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 434
+Execution Time (ms): 25109
+Will be using the record layer library
+"Apr 29, 2024 11:07:13 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 445
+Execution Time (ms): 25142
+Will be using the record layer library
+"Apr 29, 2024 11:07:39 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 441
+Execution Time (ms): 25236
+Will be using the record layer library
+"Apr 29, 2024 11:08:05 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 436
+Execution Time (ms): 25035
+Will be using the record layer library
+"Apr 29, 2024 11:08:31 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 24827
+Will be using the record layer library
+"Apr 29, 2024 11:08:57 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 437
+Execution Time (ms): 24965
+Will be using the record layer library
+"Apr 29, 2024 11:09:22 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 443
+Execution Time (ms): 24987
+Will be using the record layer library
+"Apr 29, 2024 11:09:48 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 449
+Execution Time (ms): 24770
+Will be using the record layer library
+"Apr 29, 2024 11:10:14 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 441
+Execution Time (ms): 24888
+Will be using the record layer library
+"Apr 29, 2024 11:10:39 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 447
+Execution Time (ms): 24617
+
+
+
+"./test.sh ""java -jar proxyCli.jar 127.0.0.1 8000 get-single 20000"" 20"
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:11:43 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 322
+Execution Time (ms): 27581
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 352
+Execution Time (ms): 27391
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:12:50 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 395
+Execution Time (ms): 27888
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:13:10 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 364
+Execution Time (ms): 27775
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 349
+Execution Time (ms): 27637
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 362
+Execution Time (ms): 27858
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:14:33 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 367
+Execution Time (ms): 27670
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:15:04 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 366
+Execution Time (ms): 27916
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:15:42 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 359
+Execution Time (ms): 28091
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 359
+Execution Time (ms): 27730
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 352
+Execution Time (ms): 27796
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:16:48 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 359
+Execution Time (ms): 27968
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 359
+Execution Time (ms): 27767
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 374
+Execution Time (ms): 27917
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 321
+Execution Time (ms): 27682
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:19:03 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 349
+Execution Time (ms): 27781
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:19:29 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 362
+Execution Time (ms): 27897
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 351
+Execution Time (ms): 28280
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 349
+Execution Time (ms): 27681
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 20000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 363
+Execution Time (ms): 27994
+
+
+
+"./test.sh ""java -jar cli.jar get-single 40000"" 20"
+Will be using the record layer library
+"Apr 29, 2024 11:21:35 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 451
+Execution Time (ms): 49502
+Will be using the record layer library
+"Apr 29, 2024 11:22:25 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 437
+Execution Time (ms): 49635
+Will be using the record layer library
+"Apr 29, 2024 11:23:15 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 449
+Execution Time (ms): 49515
+Will be using the record layer library
+"Apr 29, 2024 11:24:06 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 451
+Execution Time (ms): 49373
+Will be using the record layer library
+"Apr 29, 2024 11:24:56 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 49239
+Will be using the record layer library
+"Apr 29, 2024 11:25:46 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 447
+Execution Time (ms): 49840
+Will be using the record layer library
+"Apr 29, 2024 11:26:36 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 445
+Execution Time (ms): 49401
+Will be using the record layer library
+"Apr 29, 2024 11:27:26 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 428
+Execution Time (ms): 49772
+Will be using the record layer library
+"Apr 29, 2024 11:28:17 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 447
+Execution Time (ms): 50080
+Will be using the record layer library
+"Apr 29, 2024 11:29:08 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 445
+Execution Time (ms): 49575
+Will be using the record layer library
+"Apr 29, 2024 11:29:58 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 437
+Execution Time (ms): 49646
+Will be using the record layer library
+"Apr 29, 2024 11:30:49 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 466
+Execution Time (ms): 49065
+Will be using the record layer library
+"Apr 29, 2024 11:31:38 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 421
+Execution Time (ms): 49106
+Will be using the record layer library
+"Apr 29, 2024 11:32:28 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 432
+Execution Time (ms): 49423
+Will be using the record layer library
+"Apr 29, 2024 11:33:18 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 444
+Execution Time (ms): 49199
+Will be using the record layer library
+"Apr 29, 2024 11:34:08 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 451
+Execution Time (ms): 49289
+Will be using the record layer library
+"Apr 29, 2024 11:34:58 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 442
+Execution Time (ms): 49815
+Will be using the record layer library
+"Apr 29, 2024 11:35:49 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 452
+Execution Time (ms): 49685
+Will be using the record layer library
+"Apr 29, 2024 11:36:39 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 440
+Execution Time (ms): 49853
+Will be using the record layer library
+"Apr 29, 2024 11:37:30 AM com.jooms.tickettracker.data.TicketLayer warning"
+WARNING: CLIENT:*** Limit of 75000 reached!
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 437
+Execution Time (ms): 49443
+
+
+
+
+
+
+"./test.sh ""java -jar proxyCli.jar 127.0.0.1 8000 get-single 40000"" 20"
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:40:06 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 337
+Execution Time (ms): 54383
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 327
+Execution Time (ms): 54398
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 337
+Execution Time (ms): 54702
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:43:09 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 355
+Execution Time (ms): 54810
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:43:53 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 358
+Execution Time (ms): 54856
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 336
+Execution Time (ms): 54814
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:45:31 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 348
+Execution Time (ms): 54921
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:46:46 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 354
+Execution Time (ms): 54325
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 345
+Execution Time (ms): 54663
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:48:45 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 353
+Execution Time (ms): 54706
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 346
+Execution Time (ms): 54268
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:50:23 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 310
+Execution Time (ms): 54615
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 354
+Execution Time (ms): 54284
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 333
+Execution Time (ms): 54231
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 336
+Execution Time (ms): 54644
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 353
+Execution Time (ms): 54218
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 357
+Execution Time (ms): 54219
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 351
+Execution Time (ms): 54338
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+"Apr 29, 2024 11:56:42 AM com.jooms.tickettracker.client.TicketTrackerClient warning"
+"WARNING: CLIENT:RPC failed: Status{code=UNKNOWN, description=Application error processing RPC, cause=null}"
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 380
+Execution Time (ms): 54620
+Will be using the following target: 127.0.0.1:8000
+Found 75000 tickets!
+Prepared tickets!
+Read 40000 tickets!
+Command 'get-single' runtime:
+Generation Time (ms): 356
+Execution Time (ms): 54505
