@@ -110,9 +110,6 @@ The Record Layer is primarily vended as a Java library and interacts with each n
 \subsection{Research Focus and Thesis}
 This paper examines the FoundationDB Record Layer in the context of contemporary database trends. I suggest that the Record Layer's Java-only implementation limits its potential impact and broader adoption, and the network co-location requirement hinders modern deployment practices and security models. Exposing the FoundationDB Record Layer through a microservice would significantly expand its accessibility and compatibility with modern development practices, so long as it doesn't compromise the performance of interactions with FoundationDB.
 
-\subsection{Paper Structure}
-This paper examines the implementation of a gRPC microservice interface for the FoundationDB Record Layer. The following sections outline the technical approach, experimental evaluation, and analysis of results. Section 3 details the microservice architecture, testing environment configuration, and FoundationDB setup. Section 4 presents experimental data, including performance metrics and analysis for various workloads.  Finally, Section 5 provides a comprehensive conclusion and discusses potential directions for future research.
-
 \section{Literature Review}
 
 \subsection{SQL and the Origins of Relational Databases}
@@ -288,25 +285,26 @@ Below is the collected data in bar-chart and tabular formats.
         \end{axis}
     \end{tikzpicture}
     \caption{The number of reads plotted against the time it took to execute them.}
+    \Description{A bar chart of data from the single read experiment.}
 \end{figure}
 
 \begin{table}[h]
-\begin{tabular}{|r|l|l|r|}
+\begin{tabular}{|c|l|l|c|}
     \hline
     \rowcolor[HTML]{656565} 
-    \multicolumn{1}{|l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Reads}}} &
-        {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
-        {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
-        \multicolumn{1}{l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Slowdown}}} \\ \hline
-    1,000  & 1,335.4 +/- 15.48   & 1,782.35 +/- 80.91 & 33.47\% \\
+    \multicolumn{1}{|c}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{N}}} &
+    {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{\% Inc}} \\ \hline
+    1,000  & 1,335.40 +/- 15.48   & 1,782.35 +/- 80.91 & 33.47\% \\
     \rowcolor[HTML]{EFEFEF} 
-    5,000  & 6,319.5 +/- 60.42   & 7,447.65 +/- 72.04 & 17.85\% \\
-    10,000 & 12,525.05 +/- 81.47 & 14,354.1 +/- 87.04 & 14.60\% \\
+    5,000  & 6,319.50 +/- 60.42   & 7,447.65 +/- 72.04 & 17.85\% \\
+    10,000 & 12,525.05 +/- 81.47 & 14,354.10 +/- 87.04 & 14.60\% \\
     \rowcolor[HTML]{EFEFEF} 
-    20,000 & 24,936.7 +/- 119.98 & 27,815 +/- 143.04  & 11.54\% \\
-    40,000 & 49,522.8 +/- 199.89 & 54,526 +/- 173.46  & 10.10\% \\ \hline
+    20,000 & 24,936.70 +/- 119.98 & 27,815.0 +/- 143.04  & 11.54\% \\
+    40,000 & 49,522.80 +/- 199.89 & 54,526.0 +/- 173.46  & 10.10\% \\ \hline
 \end{tabular}
-\caption{The number of reads, how long they took to execute in milliseconds, +/- the measured error, and the percentage slowdown of the Proxy CLI versus the NoProxy CLI.}
+\caption{The number of reads, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
 \end{table}
 
 \subsubsection{Partial Conclusion}
@@ -372,36 +370,42 @@ Below is the collected data in bar-chart and tabular formats.
         \end{axis}
     \end{tikzpicture}
     \caption{The number of batch reads plotted against the time it took to execute them.}
+    \Description{A bar chart of data from the batch read experiment.}
 \end{figure}
 
 \begin{table}[h]
-\begin{tabular}{|r|l|l|r|}
+\begin{tabular}{|c|l|l|c|}
     \hline
     \rowcolor[HTML]{656565} 
-    \multicolumn{1}{|l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Reads}}} &
-        {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
-        {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
-        \multicolumn{1}{l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Slowdown}}} \\ \hline
+    \multicolumn{1}{|c}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{N}}} &
+    {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{\% Inc}} \\ \hline
     10  & 1,526.35 +/- 15.84   & 1,642.05 +/- 18.47   & 7.58\%  \\
     \rowcolor[HTML]{EFEFEF} 
-    50  & 5,855.75 +/- 66.25   & 7,023.7 +/- 51       & 19.95\% \\
-    100 & 11,220.4 +/- 63      & 13,883.55 +/- 54.98  & 23.73\% \\
+    50  & 5,855.75 +/- 66.25   & 7,023.70 +/- 51.00   & 19.95\% \\
+    100 & 11,220.40 +/- 63.00  & 13,883.55 +/- 54.98  & 23.73\% \\
     \rowcolor[HTML]{EFEFEF} 
     200 & 22,105.75 +/- 250.38 & 26,766.95 +/- 142.92 & 21.09\% \\
     400 & 43,695.85 +/- 348.24 & 54,060.25 +/- 199.79 & 23.72\% \\ \hline
 \end{tabular}
-\caption{The number of batch reads, how long they took to execute in milliseconds, +/- the measured error, and the percentage slowdown of the Proxy CLI versus the NoProxy CLI.}
+\caption{The number of batch reads, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
 \end{table}
 
 \subsubsection{Partial Conclusion}
 
-Experimental data indicates that the gRPC API layer introduces a non-negligible overhead for batch reads from the database. For smaller numbers of repeated batch reads, a runtime increase of 7.58\% was observed compared to direct Record Layer access. This overhead grows to approximately 20\%, with increased variability, as the number of repeated batch reads scales.
+Experimental data indicates that the gRPC API layer introduces a non-negligible overhead for batch reads from the database.
+For smaller numbers of repeated batch reads, a runtime increase of 7.58\% was observed compared to direct Record Layer access.
+This overhead grows to approximately 20\%, with increased variability, as the number of repeated batch reads scales.
 
 While less pronounced than in single-read scenarios, these results suggest that the architectural benefits of a gRPC layer should be weighed against its performance impact, particularly in applications with frequent, large-scale read operations.
 
 \subsection{Single Write Evaluation}
 
-To assess single-object write performance, \textbf{the create-single N} command was executed on both Proxy and No Proxy CLIs with increasing values of \textbf{N} (1,000 to 40,000). For each test iteration, \textbf{N} randomly generated 'Ticket' objects were created. The timer was initiated prior to saving these objects individually to FoundationDB. To maintain a consistent database state, all created objects were deleted before subsequent test runs.
+To assess single-object write performance, \textbf{the create-single N} command was executed on both Proxy and No Proxy CLIs with increasing values of \textbf{N} (1,000 to 40,000).
+For each test iteration, \textbf{N} randomly generated 'Ticket' objects were created.
+The timer was initiated prior to saving these objects individually to FoundationDB.
+To maintain a consistent database state, all created objects were deleted before subsequent test runs.
 
 \subsubsection{Data}
 
@@ -456,25 +460,26 @@ Below is the collected data in bar-chart and tabular formats.
         \end{axis}
     \end{tikzpicture}
     \caption{The number of writes plotted against the time it took to execute them.}
+    \Description{A bar chart of data from the single write experiment.}
 \end{figure}
 
 \begin{table}[h]
-\begin{tabular}{|r|l|l|r|}
+\begin{tabular}{|c|l|l|c|}
     \hline
     \rowcolor[HTML]{656565} 
-    \multicolumn{1}{|l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Writes}}} &
-        {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
-        {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
-        \multicolumn{1}{l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Slowdown}}} \\ \hline
-    1,000  & 4113.5 +/- 70.66      & 4305.95 +/- 49.32    & 4.68\%  \\
+    \multicolumn{1}{|c}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{N}}} &
+    {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{\% Inc}} \\ \hline
+    1,000  & 4,113.50 +/- 70.66      & 4,305.95 +/- 49.32      & 4.68\%  \\
     \rowcolor[HTML]{EFEFEF} 
-    5,000  & 19791.8 +/- 90.93     & 20045.7 +/- 126.23   & 1.28\%  \\
-    10,000 & 39358.35 +/- 238.27   & 39577.4 +/- 185.76   & 0.56\%  \\
+    5,000  & 197,91.80 +/- 90.93     & 20,045.70 +/- 126.23    & 1.28\%  \\
+    10,000 & 39,358.35 +/- 238.27    & 39,577.40 +/- 185.76    & 0.56\%  \\
     \rowcolor[HTML]{EFEFEF} 
-    20,000 & 78946.55 +/- 420.61   & 78803.85 +/- 433.98  & -0.18\% \\
-    40,000 & 159947.95 +/- 2544.05 & 163947.5 +/- 1787.43 & 2.50\% \\ \hline
+    20,000 & 78,946.55 +/- 420.61    & 78,803.85 +/- 433.98    & -0.18\% \\
+    40,000 & 159,947.95 +/- 2,544.05 & 163,947.50 +/- 1,787.43 & 2.50\%  \\ \hline
 \end{tabular}
-\caption{The number of writes, how long they took to execute in milliseconds, +/- the measured error, and the percentage slowdown of the Proxy CLI versus the NoProxy CLI.}
+\caption{The number of writes, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
 \end{table}
 
 \subsubsection{Partial Conclusion}
@@ -542,25 +547,26 @@ Below is the collected data in bar-chart and tabular formats.
         \end{axis}
     \end{tikzpicture}
     \caption{The number of batch writes plotted against the time it took to execute them.}
+    \Description{A bar chart of data from the batch write experiment.}
 \end{figure}
 
 \begin{table}[h]
-\begin{tabular}{|r|l|l|r|}
+\begin{tabular}{|c|l|l|c|}
     \hline
     \rowcolor[HTML]{656565} 
-    \multicolumn{1}{|l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Writes}}} &
-        {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
-        {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
-        \multicolumn{1}{l|}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{Slowdown}}} \\ \hline
-    10  & 3005.15 +/- 42.41   & 3185.9 +/- 29.57     & 6.0\% \\
+    \multicolumn{1}{|c}{\cellcolor[HTML]{656565}{\color[HTML]{FFFFFF} \textbf{N}}} &
+    {\color[HTML]{FFFFFF} \textbf{NoProxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{Proxy (ms)}} &
+    {\color[HTML]{FFFFFF} \textbf{\% Inc}} \\ \hline
+    10  & 3,005.15 +/- 42.41   & 3,185.90 +/- 29.57     & 6.0\% \\
     \rowcolor[HTML]{EFEFEF} 
-    50  & 9091.7 +/- 70.42    & 9317.05 +/- 114.41   & 2.5\% \\
-    100 & 16699.3 +/- 122.69  & 17182.35 +/- 73.59   & 2.9\% \\
+    50  & 9,091.70 +/- 70.42   & 9,317.05 +/- 114.41    & 2.5\% \\
+    100 & 16,699.30 +/- 122.69 & 17,182.35 +/- 73.59    & 2.9\% \\
     \rowcolor[HTML]{EFEFEF} 
-    200 & 32001.25 +/- 132.21 & 32699.9 +/- 248.54   & 2.2\% \\
-    400 & 61929.3 +/- 327.98  & 63828.75 +/- 1523.45 & 3.1\% \\ \hline
+    200 & 32,001.25 +/- 132.21 & 32,699.90 +/- 248.54   & 2.2\% \\
+    400 & 61,929.30 +/- 327.98 & 63,828.75 +/- 1,523.45 & 3.1\% \\ \hline
 \end{tabular}
-\caption{The number of batch writes, how long they took to execute in milliseconds, +/- the measured error, and the percentage slowdown of the Proxy CLI versus the NoProxy CLI.}
+\caption{The number of batch writes, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
 \end{table}
 
 \subsubsection{Partial Conclusion}
@@ -569,37 +575,43 @@ From the aforementioned data, it can be observed that the inclusion of a gRPC AP
 
 Given this data, it is reasonable to assert that employing the gRPC proxy version for storing large objects in FoundationDB is a prudent choice, with the exception of systems where performance is of paramount importance.
 
-\section{Figures}
+\section{Conclusion and Future Works}
 
-Your figures should contain a caption which describes the figure to
-the reader.
+\subsection{Overall Conclusion}
 
-Figure captions are placed {\itshape below} the figure.
+The experimental results strongly support the thesis that encapsulating the FoundationDB Record Layer within a gRPC microservice offers significant advantages in developer accessibility and architectural flexibility, while introducing acceptable performance overheads.
 
-Every figure should also have a figure description unless it is purely
-decorative. These descriptions convey what’s in the image to someone
-who cannot see it. They are also used by search engine crawlers for
-indexing images, and when images cannot be loaded.
+While a multi-language rewrite of the Record Layer would provide the most optimized solution, the development and maintenance costs of such an approach likely outweigh the benefits for most use cases.
+The gRPC-based microservice approach effectively addresses the language barrier with minimal performance impact, particularly for write-heavy workloads where latency increases are within a 1-6% range.
 
-A figure description must be unformatted plain text less than 2000
-characters long (including spaces).  {\bfseries Figure descriptions
-  should not repeat the figure caption – their purpose is to capture
-  important information that is not already provided in the caption or
-  the main text of the paper.} For figures that convey important and
-complex new information, a short text description may not be
-adequate. More complex alternative descriptions can be placed in an
-appendix and referenced in a short figure description. For example,
-provide a data table capturing the information in a bar chart, or a
-structured list representing a graph.  For additional information
-regarding how best to write figure descriptions and why doing this is
-so important, please see
-\url{https://www.acm.org/publications/taps/describing-figures/}.
+Crucially, deploying the Record Layer as a horizontally scalable microservice resolves the network co-location requirement by handling the direct connection to FoundationDB for each request.
+This empowers organizations to leverage FoundationDB's open-source, NewSQL capabilities within modern, security-conscious network architectures.
+Overall, this work demonstrates that a gRPC microservice wrapper effectively expands the potential of the FoundationDB Record Layer, making it a more compelling data storage option for a wider range of developers and applications.
 
+\subsection{Future Work}
+
+\subsubsection{Remove "Business Logic" From The API}
+
+A key optimization opportunity lies in streamlining the protobuf handling within the gRPC microservice and Record Layer. Currently, protobuf messages undergo unnecessary decoding and re-encoding steps between the microservice and storage layers.
+By modifying the Record Layer to directly accept and store protobuf messages received from gRPC clients, performance improvements and easier extensibility could be realized.
+
+\subsubsection{Create a Relationship Layer}
+
+This research highlights the potential benefits of extending the layered approach within FoundationDB.
+Informed by the limitations of the Record Layer in handling complex relational data, a valuable future direction lies in developing a "Relationship Layer" on top of the existing Record Layer and gRPC API.
+This layer would introduce support for defining and querying rich relationships between records.
+
+By leveraging the core infrastructure and this gRPC microservice, developers could enjoy familiar SQL-like workflows while utilizing FoundationDB's scalability and resilience.
+Offering both the Record Layer and Relationship Layer would empower developers to choose the optimal data modeling approach based on their application's specific needs.
 
 \begin{acks}
-I would like to express my sincere gratitude to a good friend of mine who not only directed my attention towards FoundationDB, but also provided the evaluation environment described above. Scott Minor supported me with supporting knowledge, advice, and willpower as I needed them. I wouldn't have looked into this without him, nor would any paper I eventually wrote have ended up half as good. Thank you Scott!
+I would like to express my sincere gratitude to a good friend of mine who not only directed my attention towards FoundationDB, but also provided the evaluation environment described above.
+Scott Minor supported me with supporting knowledge, advice, and willpower as I needed them.
+I wouldn't have looked into this without him, nor would any paper I eventually wrote have ended up half as good.
+Thank you Scott!
 
-I'd also like to thank my Advisor for this, David Zeichick at CSU Chico. He helped guide me through the structure of researching a project and his weekly check-ins kept me on track to get all of this done in a single semester.
+I'd also like to thank my Graduate Project Advisor for this, David Zeichick at CSU Chico.
+He helped guide me through the structure of researching a project and his weekly check-ins kept me on track to get all of this done in a single semester.
 \end{acks}
 
 %%
@@ -612,3 +624,4 @@ I'd also like to thank my Advisor for this, David Zeichick at CSU Chico. He help
 \endinput
 %%
 %% End of file `fdb-paper.tex'.
+
