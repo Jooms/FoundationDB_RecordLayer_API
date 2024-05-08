@@ -61,7 +61,7 @@
 \begin{abstract}
     This paper examines the FoundationDB Record Layer, a Java library enabling record-oriented data storage within the scalable NewSQL FoundationDB database. While powerful, the Record Layer's Java-only implementation and network co-location requirement limit its broader adoption. This research explores the feasibility of encapsulating the Record Layer within a gRPC microservice to address these limitations.
     
-    A gRPC microservice layer was implemented, and its performance impact was evaluated against direct Record Layer usage. Experimental results demonstrate that while some overhead is introduced, particularly for read operations, the gRPC approach significantly expands language accessibility and architectural flexibility. For write-heavy workloads, the performance overhead is minimal (1-6\%). This makes the gRPC-enabled Record Layer a compelling option for developers seeking FoundationDB's scalability and ACID guarantees without language or network constraints.
+    A gRPC microservice layer was implemented, and its performance impact was evaluated against direct Record Layer usage. Experimental results demonstrate that while some overhead is introduced, particularly for read operations, the gRPC approach significantly expands language accessibility and architectural flexibility. For write-heavy workloads, the performance overhead is minimal (1-6\%). This makes the gRPC-enabled Record Layer a compelling option for developers seeking FoundationDB's scalability and ACID (Atomicity, Consistency, Isolation, Durability) guarantees without language or network constraints.
     
     Future work directions include optimizing protobuf handling within the microservice and exploring the development of a "Relationship Layer" to support richer relational data modeling on top of the Record Layer.
 \end{abstract}
@@ -101,12 +101,12 @@ Relational databases built upon SQL have dominated data storage since the 1970s 
 NewSQL technologies, such as FoundationDB, emerged to bridge this gap. They seek to provide scalable, distributed data storage while maintaining ACID compliance. FoundationDB takes this concept further by proposing a fundamental separation of data models, query languages, and storage engines\cite{FoundationDBPaper}. This approach emphasizes the key-value store as a basic building block, with higher-order data models and query capabilities implemented as composable "Layers."
 
 \subsection{FoundationDB's Record Layer}
-FoundationDB's Record Layer (2018) is a notable example of this layered approach. It provides a record-oriented storage model akin to relational databases, featuring structured types, indexes, and basic querying capabilities. This layer is of particular interest because it illustrates both the possibilities and potential limitations of FoundationDB's design philosophy.
+FoundationDB's Record Layer\cite{FDBRecordLayer} is a notable example of this layered approach. It provides a record-oriented storage model akin to relational databases, featuring structured types, indexes, and basic querying capabilities. This layer is of particular interest because it illustrates both the possibilities and potential limitations of FoundationDB's design philosophy.
 
-The Record Layer is primarily vended as a Java library and interacts with each node in the FoundationDB cluster as needed. This means that the primary use case supported by the Record Layer is to be imported and used by a Java application that runs in the same network as the FoundationDB cluster itself.
+The Record Layer is primarily vended as a Java library \cite{FDBRecordGithub} and interacts with each node in the FoundationDB cluster as needed. This means that the primary use case supported by the Record Layer is to be imported and used by a Java application that runs in the same network as the FoundationDB cluster itself.
 
 \subsection{Research Focus and Thesis}
-This paper examines the FoundationDB Record Layer in the context of contemporary database trends. I suggest that the Record Layer's Java-only implementation limits its potential impact and broader adoption, and the network co-location requirement hinders modern deployment practices and security models. Exposing the FoundationDB Record Layer through a microservice would significantly expand its accessibility and compatibility with modern development practices, so long as it doesn't compromise the performance of interactions with FoundationDB.
+This paper examines the FoundationDB Record Layer in the context of contemporary database trends. It is suggested that the Record Layer's Java-only implementation limits its potential impact and broader adoption, and the network co-location requirement hinders modern deployment practices and security models. Exposing the FoundationDB Record Layer through a microservice would significantly expand its accessibility and compatibility with modern development practices, so long as it doesn't compromise the performance of interactions with FoundationDB.
 
 \section{Literature Review}
 
@@ -122,7 +122,7 @@ However, Eric Brewer, in his 2000 keynote, presented the CAP theorem \cite{Brewe
 
 \subsection{ACID and the Emergence of NewSQL}
 
-The lack of ACID (Atomicity, Consistency, Isolation, Durability) compliance in NoSQL systems became a barrier for many developers \cite{NewSQL}. NewSQL technologies emerged in the early 2010s, aiming to bridge the gap by offering ACID compliance alongside horizontal scalability \cite{NewSQL}. FoundationDB, released in 2010 \cite{FoundationDBCreation}, gained prominence for its highly scalable, fault-tolerant design and flexible data models \cite{FoundationDBPaper,Snowflake}. FoundationDB's emphasis on ACID transactions enabled developers to regain the transactional guarantees familiar from traditional SQL systems.
+The lack of ACID compliance in NoSQL systems became a barrier for many developers \cite{NewSQL}. NewSQL technologies emerged in the early 2010s, aiming to bridge the gap by offering ACID compliance alongside horizontal scalability \cite{NewSQL}. FoundationDB, released in 2010 \cite{FoundationDBCreation}, gained prominence for its highly scalable, fault-tolerant design and flexible data models \cite{FoundationDBPaper,Snowflake}. FoundationDB's emphasis on ACID transactions enabled developers to regain the transactional guarantees familiar from traditional SQL systems.
 
 \subsection{FoundationDB's Innovations and Differentiators}
 
@@ -142,15 +142,15 @@ Despite its advantages, FoundationDB faces limitations that may hinder its wider
   \label{fig:diag_system}
 \end{figure}
 
-This section provides a comprehensive overview of all the components of the experiment (Figure \ref{fig:diag_system}). I will describe the process of writing the code for the experiment and the configuration of the testing environment in detail.
+This section provides a comprehensive overview of all the components of the experiment (Figure \ref{fig:diag_system}). The following subsections describe the process of writing the code\cite{PaperGithub} for the experiment and the configuration of the testing environment in detail.
 
 \subsection{Code}
 
-To evaluate the time added by a gRPC API built around the Record Layer, I built a common TicketLayer library that the two different CLIs use.
+To evaluate the time added by a gRPC API built around the Record Layer, a common TicketLayer library was built for the two different CLIs use.
 
 \subsubsection{TicketLayer Library}
 
-I implemented a shared TicketLayer library as a Data Access Layer (DAL). This DAL provides consistent save and get operations for interacting with the FoundationDB Record Layer. Employing this shared DAL across both the CLI and server components guarantees experimental consistency.
+The shared TicketLayer library was implemented as a Data Access Layer (DAL). This DAL provides consistent \textbf{save} and \textbf{get} operations for interacting with the FoundationDB Record Layer. Employing this shared DAL across both the CLI and server components guarantees experimental consistency.
 
 \subsubsection{No Proxy CLI}
 
@@ -197,6 +197,8 @@ For the purpose of acquiring timing-related data for this experiment, four indiv
 
 Since the focus is on the overhead of the gRPC layer, detailed hardware specifications of the FoundationDB cluster are less critical. However, providing a high-level overview ensures reproducibility.
 
+Exact FoundationDB configuration information can be found in the connected source code repository\cite{PaperGithub} for this paper.
+
 \subsubsection{Test Machine}
 
 \begin{itemize}
@@ -224,7 +226,7 @@ Since the focus is on the overhead of the gRPC layer, detailed hardware specific
 
 \subsection{Experimental Methodology}
 
-Four performance tests were conducted, each comparing the Proxy CLI and No Proxy CLI setups described in Section 2. Both CLIs executed the same commands with incrementally increasing arguments. To ensure accurate timing, a timing mechanism was implemented around each command. This process was repeated 20 times per CLI and argument combination. Data points in subsequent charts represent the average runtime across these 20 executions, with a measured confidence level exceeding 99.9%.
+Four performance tests were conducted, each comparing the Proxy CLI and No Proxy CLI setups described in Section 2. Both CLIs executed the same commands with incrementally increasing arguments. To ensure accurate timing, a timing mechanism was implemented around each command. This process was repeated 20 times per CLI and argument combination. Data points in subsequent charts represent the average runtime across these 20 executions, with a measured confidence level exceeding 99.9\%.
 
 \subsection{Single Read Evaluation}
 
@@ -232,7 +234,7 @@ To assess single record retrieval, the \textbf{get-single N} command was execute
 
 \subsubsection{Data}
 
-Below is the collected data in bar-chart and tabular formats.
+See Figure \label{fig:single_read} and Table \label{tab:single_read} below.
 
 \begin{figure}[h]
     \centering
@@ -284,6 +286,7 @@ Below is the collected data in bar-chart and tabular formats.
     \end{tikzpicture}
     \caption{The number of reads plotted against the time it took to execute them.}
     \Description{A bar chart of data from the single read experiment.}
+    \label{fig:single_read}
 \end{figure}
 
 \begin{table}[h]
@@ -303,11 +306,12 @@ Below is the collected data in bar-chart and tabular formats.
     40,000 & 49,522.80 +/- 199.89 & 54,526.0 +/- 173.46  & 10.10\% \\ \hline
 \end{tabular}
 \caption{The number of reads, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
+\label{tab:single_read}
 \end{table}
 
 \subsubsection{Partial Conclusion}
 
-The data demonstrates that a gRPC API layer built upon the Record Layer introduces considerable overhead when retrieving single records from the database. In scenarios with a low volume of reads, both runtime increases (33\%) and greater variability (~80ms vs ~15ms) were observed compared to direct Record Layer access. While the overhead decreases with larger numbers of reads (10\%), it remains noticeable.
+The data demonstrates that a gRPC API layer built upon the Record Layer introduces considerable overhead when retrieving single records from the database. In scenarios with a low volume of reads, both runtime increases (33\%) (Figure \ref{fig:single_read}) and greater variability (~80ms vs ~15ms, Table \ref{tab:single_read}) were observed compared to direct Record Layer access. While the overhead decreases with larger numbers of reads (10\%), it remains noticeable.
 
 This finding suggests that for applications requiring high Queries Per Second (QPS) on small-object reads, the performance trade-offs of a gRPC layer warrant careful consideration against the architectural and developer-facing benefits outlined earlier in the paper.
 
@@ -317,7 +321,7 @@ To evaluate batch read performance, the \textbf{get-multiple N} command was exec
 
 \subsubsection{Data}
 
-Below is the collected data in bar-chart and tabular formats.
+See Figure \label{fig:batch_read} and Table \label{tab:batch_read} below.
 
 \begin{figure}[h]
     \centering
@@ -369,6 +373,7 @@ Below is the collected data in bar-chart and tabular formats.
     \end{tikzpicture}
     \caption{The number of batch reads plotted against the time it took to execute them.}
     \Description{A bar chart of data from the batch read experiment.}
+    \label{fig:batch_read}
 \end{figure}
 
 \begin{table}[h]
@@ -388,13 +393,14 @@ Below is the collected data in bar-chart and tabular formats.
     400 & 43,695.85 +/- 348.24 & 54,060.25 +/- 199.79 & 23.72\% \\ \hline
 \end{tabular}
 \caption{The number of batch reads, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
+\label{tab:batch_read}
 \end{table}
 
 \subsubsection{Partial Conclusion}
 
 Experimental data indicates that the gRPC API layer introduces a non-negligible overhead for batch reads from the database.
-For smaller numbers of repeated batch reads, a runtime increase of 7.58\% was observed compared to direct Record Layer access.
-This overhead grows to approximately 20\%, with increased variability, as the number of repeated batch reads scales.
+For smaller numbers of repeated batch reads, a runtime increase of 7.58\% (Figure \ref{fig:batch_read}) was observed compared to direct Record Layer access.
+This overhead grows to approximately 20\% (Table \ref{tab:batch_read}), with increased variability, as the number of repeated batch reads scales.
 
 While less pronounced than in single-read scenarios, these results suggest that the architectural benefits of a gRPC layer should be weighed against its performance impact, particularly in applications with frequent, large-scale read operations.
 
@@ -407,7 +413,7 @@ To maintain a consistent database state, all created objects were deleted before
 
 \subsubsection{Data}
 
-Below is the collected data in bar-chart and tabular formats.
+See Figure \label{fig:single_write} and Table \label{tab:single_write} below.
 
 \begin{figure}[h]
     \centering
@@ -459,6 +465,7 @@ Below is the collected data in bar-chart and tabular formats.
     \end{tikzpicture}
     \caption{The number of writes plotted against the time it took to execute them.}
     \Description{A bar chart of data from the single write experiment.}
+    \label{fig:single_write}
 \end{figure}
 
 \begin{table}[h]
@@ -478,23 +485,24 @@ Below is the collected data in bar-chart and tabular formats.
     40,000 & 159,947.95 +/- 2,544.05 & 163,947.50 +/- 1,787.43 & 2.50\%  \\ \hline
 \end{tabular}
 \caption{The number of writes, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
+\label{tab:single_write}
 \end{table}
 
 \subsubsection{Partial Conclusion}
 
-The experimental results indicate that a gRPC API layer introduces minimal overhead when writing small records to the database. In tests with a low volume of writes, a slight runtime increase (4.68\%) was observed for the Proxy CLI. However, this difference becomes negligible as the number of writes increases.
+The experimental results indicate that a gRPC API layer introduces minimal overhead when writing small records to the database. In tests with a low volume of writes, a slight runtime increase (4.68\%, Figure \ref{fig:single_write}) was observed for the Proxy CLI. However, this difference becomes negligible (Table \ref{tab:single_write}) as the number of writes increases.
 
 These findings suggest that for write-heavy workloads, employing a gRPC proxy layer has limited performance drawbacks. Consider this alongside the architectural and developer-facing benefits discussed earlier when choosing a FoundationDB Record Layer access strategy
 
 \subsection{Batch Write Evaluation}
 
-For the purpose of conducting this experiment, I executed the \textbf{create-multiple 500 N} command for both the Proxy and No Proxy CLIs, gradually increasing the number of tickets from 10 to 400. During this test, each CLI generated \textbf{500} random ticket objects \textbf{N} times, storing them in distinct lists of \textbf{500} tickets each. Subsequently, the CLIs initiated a timer and proceeded to access each list in FoundationDB via \textbf{N} distinct calls.
+For the purpose of conducting this experiment, the \textbf{create-multiple 500 N} command was executed for both the Proxy and No Proxy CLIs, gradually increasing the number of tickets from 10 to 400. During this test, each CLI generated \textbf{500} random ticket objects \textbf{N} times, storing them in distinct lists of \textbf{500} tickets each. Subsequently, the CLIs initiated a timer and proceeded to access each list in FoundationDB via \textbf{N} distinct calls.
 
-Upon completion of the test, I proceeded to delete all tickets from FoundationDB to ensure that subsequent creations occurred within a pristine and empty database.
+Upon completion of the test, there was a \textbf{delete all} step that cleared all tickets from FoundationDB to ensure that subsequent creations occurred within a pristine and empty database.
 
 \subsubsection{Data}
 
-Below is the collected data in bar-chart and tabular formats.
+See Figure \label{fig:batch_write} and Table \label{tab:batch_write} below.
 
 \begin{figure}[h]
     \centering
@@ -546,6 +554,7 @@ Below is the collected data in bar-chart and tabular formats.
     \end{tikzpicture}
     \caption{The number of batch writes plotted against the time it took to execute them.}
     \Description{A bar chart of data from the batch write experiment.}
+    \label{fig:batch_write}
 \end{figure}
 
 \begin{table}[h]
@@ -565,11 +574,12 @@ Below is the collected data in bar-chart and tabular formats.
     400 & 61,929.30 +/- 327.98 & 63,828.75 +/- 1,523.45 & 3.1\% \\ \hline
 \end{tabular}
 \caption{The number of batch writes, how long they took to execute in milliseconds, +/- the measured error, and the percentage increase in runtime of the Proxy CLI versus the NoProxy CLI.}
+\label{tab:batch_write}
 \end{table}
 
 \subsubsection{Partial Conclusion}
 
-From the aforementioned data, it can be observed that the inclusion of a gRPC API layer on top of the Record Layer does not result in a significant increase in the overhead associated with writing large chunks of records to a backend database. In the case of small numbers of repeated batch writes, a slightly increased runtime (6\%) is observed when utilizing the Proxy CLI as opposed to the CLI. However, as the number of writes increases, there appears to be negligible difference between the gRPC proxy and non-gRPC versions.
+From the aforementioned data, it can be observed that the inclusion of a gRPC API layer on top of the Record Layer does not result in a significant increase in the overhead associated with writing large chunks of records to a backend database. In the case of small numbers of repeated batch writes, a slightly increased runtime (6\%, Figure \ref{fig:batch_write}) is observed when utilizing the Proxy CLI as opposed to the CLI. However, as the number of writes increases, there appears to be negligible (Table \ref{tab:batch_write}) difference between the gRPC proxy and non-gRPC versions.
 
 Given this data, it is reasonable to assert that employing the gRPC proxy version for storing large objects in FoundationDB is a prudent choice, with the exception of systems where performance is of paramount importance.
 
